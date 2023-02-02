@@ -8,7 +8,10 @@ router.use('/item',(req,res)=>{
   res.render("productDetail");
 });
 router.use('/order',(req,res)=>{
-  res.render("order");
+  res.render("orderSuccess");
+});
+router.use('/admin',(req,res)=>{
+  res.render("admin");
 });
 module.exports = router;
 
