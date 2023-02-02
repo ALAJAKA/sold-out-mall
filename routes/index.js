@@ -1,10 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
-router.use('/',(req,res)=>{
+router.use('/api',(req,res)=>{
   res.render("main");
 });
-
+router.use('/item',(req,res)=>{
+  res.render("productDetail");
+});
 module.exports = router;
 
 
