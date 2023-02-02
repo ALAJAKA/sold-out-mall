@@ -7,6 +7,9 @@ router.use('/api',(req,res)=>{
 router.use('/item',(req,res)=>{
   res.render("productDetail");
 });
+router.use('/order',(req,res)=>{
+  res.render("order");
+});
 module.exports = router;
 
 
