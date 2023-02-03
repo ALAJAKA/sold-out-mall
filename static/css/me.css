@@ -1,0 +1,640 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Mono:wght@500&family=Open+Sans:wght@400;700&display=swap');
+
+@import 'reset.css';
+@import 'nav.css';
+@import 'sorting.css';
+
+body {
+  margin: 0 auto;
+  font-family: 'Fira Mono, monospace Open Sans, sans-serif';
+  background-color: #ffffff;
+  max-width: 2000px;
+}
+
+body a {
+  color: black;
+}
+
+a {
+  text-decoration-line: none;
+}
+@media screen and (max-width: 767px) {
+  .board__parent {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1056px) {
+  .board__parent {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 1057px) and (max-width: 1440px) {
+  .board__parent {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (min-width: 1441px) and (max-width: 1919px) {
+  .board__parent {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .board__parent {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.board__parent {
+  max-width: 2000px;
+  margin: 50px 25px;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  grid-gap: 20px;
+}
+
+.board {
+  background-color: #ffff;
+  text-decoration: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+
+  min-height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  position: relative;
+  top: 0;
+  transition: 0.45678s;
+}
+
+.board:hover {
+  top: -4px;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.31);
+}
+
+.content__thumbnail {
+  padding-bottom: 70%;
+  background-size: center;
+  background-position: center 45%;
+
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+
+.content__text {
+  padding: 1rem;
+}
+
+.content__title {
+  padding: 1rem;
+  font: bold;
+  font-weight: 800;
+  font-size: 1rem;
+  color: var(--content-title);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.content__sub {
+  padding: 1rem;
+
+  opacity: 0.6;
+}
+
+.content__date {
+  padding: 1rem;
+  opacity: 0.4;
+}
+
+.user {
+  border-top: 1px solid #cfcfcf;
+  font-size: 0.75rem;
+  padding: 10px 10px;
+  margin: 10px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h3 {
+  font-size: 16px;
+}
+.text-navy {
+  /* color: #1ab394; */
+  color: black;
+}
+.cart-product-imitation {
+  text-align: center;
+  /* padding-top: 30px; */
+  height: 80px;
+  width: 80px;
+  background-color: #f8f8f9;
+}
+.product-imitation.xl {
+  padding: 120px 0;
+}
+.desc {
+  margin-left: 30px;
+}
+.product-desc {
+  padding: 20px;
+  position: relative;
+}
+.ecommerce .tag-list {
+  padding: 0;
+}
+.ecommerce .fa-star {
+  color: #d1dade;
+}
+.ecommerce .fa-star.active {
+  color: #f8ac59;
+}
+.ecommerce .note-editor {
+  border: 1px solid #e7eaec;
+}
+table.shoping-cart-table {
+  margin-bottom: 0;
+}
+table.shoping-cart-table tr td {
+  border: none;
+  text-align: right;
+}
+table.shoping-cart-table tr td.desc,
+table.shoping-cart-table tr td:first-child {
+  text-align: left;
+}
+table.shoping-cart-table tr td:last-child {
+  width: 80px;
+}
+.ibox {
+  clear: both;
+  margin-bottom: 25px;
+  margin-top: 0;
+  padding: 0;
+}
+.ibox.collapsed .ibox-content {
+  display: none;
+}
+.ibox:after,
+.ibox:before {
+  display: table;
+}
+.ibox-title {
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  background-color: #ffffff;
+  border-color: #e7eaec;
+  border-image: none;
+  border-style: solid solid none;
+  border-width: 3px 0 0;
+  color: inherit;
+  margin-bottom: 0;
+  padding: 14px 15px 7px;
+  min-height: 48px;
+}
+.ibox-content {
+  background-color: #ffffff;
+  color: inherit;
+  padding: 15px 20px 20px 20px;
+  border-color: #e7eaec;
+  border-image: none;
+  border-style: solid solid none;
+  border-width: 1px 0;
+}
+.ibox-footer {
+  color: inherit;
+  border-top: 1px solid #e7eaec;
+  font-size: 90%;
+  background: #ffffff;
+  padding: 10px 15px;
+}
+
+.buttons {
+  display: flex;
+}
+
+.cart_title {
+  font-size: 25px;
+}
+
+.m-b-none {
+  display: flex;
+}
+
+.cart_price {
+  text-align: right;
+}
+
+.chatroom-container {
+  width: 100%;
+  margin: 0 auto;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #bbbbbb;
+}
+
+.header {
+  padding: 20px;
+  text-align: center;
+  background-color: rgb(61, 130, 247);
+  color: #ffffff;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.conversation-container {
+  padding: 20px;
+  height: 400px;
+  overflow-y: scroll;
+}
+
+.message {
+  margin: 20px 0;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.left {
+  background-color: #ffffff;
+  float: left;
+  clear: both;
+}
+
+.right {
+  background-color: rgb(61, 130, 247);
+  color: #ffffff;
+  float: right;
+  clear: both;
+}
+
+.input-container {
+  padding: 20px;
+  background-color: #ffffff;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+input[type='text'] {
+  width: 80%;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #bbbbbb;
+}
+
+button {
+  width: 20%;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background-color: rgb(61, 130, 247);
+  color: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.mypage_header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100px;
+}
+
+.header_title {
+  background-color: rgb(61, 130, 247);
+  color: white;
+  width: 25%;
+  height: 100%;
+  text-align: center;
+  line-height: 90px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.header_point {
+  background-color: rgb(179, 207, 255);
+  color: white;
+  width: 25%;
+  height: 100%;
+  text-align: center;
+  line-height: 90px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.header_coupon {
+  background-color: rgb(179, 207, 255);
+  color: white;
+  width: 25%;
+  height: 100%;
+  text-align: center;
+  line-height: 90px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.header_order {
+  background-color: rgb(179, 207, 255);
+  color: white;
+  width: 25%;
+  height: 100%;
+  text-align: center;
+  line-height: 90px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.user-info {
+  background-color: white;
+  border: 1px solid black;
+}
+
+.order_info {
+  display: flex;
+}
+
+.product_thumbnail {
+  margin-top: 30px;
+  margin-left: 30px;
+  width: 100%;
+}
+
+.order_detail {
+  display: flex;
+}
+
+.banner_image {
+  flex-grow: 1;
+  width: 100%; /* Set the width to 800 pixels */
+  height: 600px; /* Set the height to 600 pixels */
+  display: inline-block; /* Make the element an inline-block element */
+  text-align: center; /* Center the element horizontally */
+  background-size: cover; /* Scale the image to cover the entire element */
+  background-position: center; /* Center the image within the element */
+  background-repeat: no-repeat; /* Do not repeat the image */
+}
+
+.stylish-button {
+  background-color: white; /* Green */
+  border: 1px solid rgb(61, 130, 247);
+  color: rgb(61, 130, 247);
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 50%;
+}
+
+.stylish-button1 {
+  background-color: rgb(61, 130, 247);
+  border: 1px solid rgb(61, 130, 247);
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 50%;
+}
+
+.stylish-button2 {
+  background-color: #ffffff; /* Green */
+  border: 1px solid gray;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 30px;
+  margin-left: 15px;
+  margin-right: 15px;
+  width: 70%;
+}
+
+.product_text {
+  flex-grow: 3;
+}
+
+/* Add some styling for the page */
+body {
+  font-family: Arial, sans-serif;
+}
+
+body a {
+  color: black;
+}
+
+body a:hover {
+  color: rgb(145, 145, 145);
+}
+
+.section_banner {
+}
+
+.banner_image {
+  margin-top: 20px;
+  width: 100%;
+  height: 100px;
+}
+
+.banner {
+  width: 50%;
+}
+
+.product {
+  padding: 10px;
+}
+
+.product_name {
+  padding: 10px;
+  margin-left: 30px;
+  margin-top: 30px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.product_price {
+  padding: 10px;
+  margin-left: 30px;
+  font-size: 20px;
+}
+
+.product_quantity {
+  padding: 10px;
+  margin-left: 30px;
+  font-size: 18px;
+}
+
+.product_date {
+  padding: 10px;
+  color: gray;
+}
+
+.customer_point {
+  font-weight: 600;
+  margin-left: 20px;
+  padding: 10px;
+}
+
+.myinfo {
+  margin-top: 50px;
+  margin-left: 100px;
+}
+
+.mypage-buttons {
+  width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+.mypage-buttons input[type='text'],
+.mypage-buttons input[type='password'] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px 20px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.mypage-buttons input[type='submit'] {
+  font-size: 14px;
+  width: 100%;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #212529;
+  border: 1px solid #212529;
+  background-color: white;
+
+  height: 40px;
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.mypage-buttons input[type='submit']:hover {
+  background-color: black;
+  color: white;
+}
+
+.mypage {
+  margin-top: 20px;
+  font-size: 14px;
+  width: 400px;
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #212529;
+  border: 1px solid #312f1f;
+  background-color: white;
+
+  height: 40px;
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.mypage:hover {
+  background-color: #312f1f;
+  color: white;
+}
+
+.confirm-dialog {
+  /* Add some styling for the dialog box */
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  width: 300px;
+  padding: 20px;
+  text-align: center;
+}
+.confirm-dialog p {
+  /* Add some styling for the message */
+  margin: 0;
+  font-size: 16px;
+}
+.confirm-dialog button {
+  /* Add some styling for the buttons */
+  background-color: #4caf50;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  cursor: pointer;
+}
+.confirm-dialog button:hover {
+  background-color: #45a049;
+}
+
+.tabs-container {
+  display: flex;
+  margin-left: 10%;
+}
+
+.tabs {
+  width: 200px; /* Adjust the width of the tab menu */
+  border-right: 1px solid #ccc;
+  margin-top: 10px;
+  font-size: 20px;
+  /* border-bottom: 1px solid #ccc; */
+}
+
+.tab {
+  cursor: pointer;
+  padding: 10px;
+  margin-top: 10px;
+  font-weight: 500;
+  /* border: 1px solid #ccc; */
+  border-bottom: none;
+}
+
+.tab.active {
+  font-size: 20px;
+  /* border-bottom: 1px solid #fff; */
+}
+
+.tab-content {
+  flex: 1; /* Make the tab content take up the remaining space */
+  padding: 10px;
+  margin-top: 20px;
+  margin-left: 50px;
+
+  overflow: auto; /* Add scrollbars if the content is too tall */
+}
+
+.tab-pane {
+  display: none;
+}
+
+.tab-pane.active {
+  display: block;
+}

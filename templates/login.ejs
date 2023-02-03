@@ -1,151 +1,101 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
-    <title>Login</title>
-
-    <!--    BootStrap Library-->
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
-    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>다8고양</title>
+    <link rel="stylesheet" href="/css/login.css"/>
     <script
-      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
       crossorigin="anonymous"
     ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous"
-    ></script>
-    <!--    JQuery-->
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-
-    <!--    JQuery Cookie-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  
   </head>
-  <style></style>
-  <script>
-    if (document.cookie) {
-      $.ajax({
-        type: 'GET',
-        url: '/api/users/me',
-        data: {},
-        success: function (response) {
-          // alert(response.user.userType);
-          if (response.user.userType === 1) {
-            location.href = '/api/laundry'; // 사용자 페이지로 이동
-          } else if (response.user.userType === 0) {
-            location.href = '/api/bosswork'; // 사장 페이지로 이동
-          }
-        },
-      });
-    }
-    let token;
-    // 로그인 실행
-    function loginEvent() {
-      const email = $('#email').val();
-      const password = $('#password').val();
-      $.ajax({
-        type: 'POST',
-        url: '/api/login',
-        data: { email, password },
-        success: function (response) {
-          // 개발자도구 application - cookie에서 확인 가능
-          token = response.token;
-          login();
-        },
-        error: function (error) {
-          alert(error.responseJSON.errorMessage);
-        },
-      });
-    }
-    function login() {
-      if (token) {
-        console.log(token);
-        $.ajax({
-          type: 'GET',
-          url: '/api/users/me',
-          data: {},
-          success: function (response) {
-            // alert(response.user.userType);
-            if (response.user.userType === 1) {
-              location.href = '/api/laundry'; // 사용자 페이지로 이동
-            } else if (response.user.userType === 0) {
-              location.href = '/api/bosswork'; // 사장 페이지로 이동
-            }
-          },
-        });
-      }
-    }
 
-    function moveToSign() {
-      location.href = 'signup';
-    }
-
-    function moveToLogin() {
-      location.href = '/api/login';
-    }
-  </script>
   <body>
-    <div class="container" style="margin-top: 20px">
-      <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
-          <img
-            src="https://www.gg.go.kr/site/gg/common/assets/images/img-header-logo.jpg"
-            alt="logo"
-          />
-          <h1
-            style="
-              display: inline-block;
-              text-align: center;
-              margin-top: 50px;
-              margin-bottom: 50px;
-            "
-          >
-            경기도민
-          </h1>
-        </div>
-        <div class="col-md-3"></div>
-      </div>
+    <div class="login-image">
+
+
     </div>
-    <div>
-      <div class="card-body">
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input
-            type="email"
-            class="form-control"
-            id="email"
-            aria-describedby="email"
-            placeholder="Enter Email"
-          />
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input
-            type="password"
-            class="form-control"
-            id="password"
-            placeholder="Password"
-          />
-        </div>
-        <button class="btn btn-outline-primary" onclick="loginEvent()">
-          로그인
-        </button>
-        <button class="btn btn-outline-primary" onclick="moveToSign()">
-          회원가입
-        </button>
-      </div>
-    </div>
+
+    <div class="login-form">
+
+      <a href="/"><h1>D`a 8 Goyang<h1></a>
+
+      <form
+        action="/login"
+        id="login-form"
+        method="post"
+        onsubmit="return validateForm()"
+      >
+        <input type="email" id="email" name="email" placeholder="이메일을 입력해주세요" />
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="비밀번호를 입력해주세요"
+        />
+        <input type="submit" value="로그인" />
+      </form>
+
+      <a href="/signup"><button class="signup">회원가입</button></a>
+    
+
+  </div>
+    <!-- include the jQuery library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+
+    <script>
+      $(document).ready(function () {
+        $('#login-form').submit(function (e) {
+          e.preventDefault(); // prevent the form from submitting normally
+
+          // get the form data
+          var formData = {
+            email: $('#email').val(),
+            password: $('#password').val(),
+          };
+
+          // send the POST request
+          $.ajax({
+            type: 'POST',
+            url: '/login',
+            data: formData,
+            success: function (response) {
+              // handle the successful response
+              console.log(response);
+              window.alert('Login success');
+              window.location = '/';
+            },
+
+
+            error: function (xhr, status, error) {
+              if (xhr.status === 400) {
+                // If the login fails, show a confirm dialog with the error message from the server
+                const response = JSON.parse(xhr.responseText);
+                window.confirm(response.errorMessage);
+              }
+            },
+          });
+        });
+      });
+    </script>
+
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
