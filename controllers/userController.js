@@ -3,94 +3,97 @@ const UserService = require('../services/userService');
 class UserController {
   userService = new UserService();
 
-  //È¸¿ø°¡ÀÔ
+  //íšŒì›ê°€ìž…
   signup = async (req, res) => {
     const { email, password, confirmPw, name, phone, address } = req.body;
+    console.log('email', email);
 
-    try {
-      const signup = await this.userService.Signup(
-        email,
-        password,
-        confirmPw,
-        name,
-        phone,
-        address
-      );
+    const signup = await this.userService.signup(
+      email,
+      password,
+      confirmPw,
+      name,
+      phone,
+      address
+    );
+    //   try { );
 
-      if (typeof signup.message !== 'undefined') {
-        throw signup;
-      }
-      return res.status(201).send({ message: 'È¸¿ø°¡ÀÔ ¿Ï·á!' });
-    } catch (error) {
-      if (error.message === 'id Çü½Ä Æ²¸²') {
-        return res
-          .status(412)
-          .send({ errorMessage: 'IDÀÇ Çü½ÄÀÌ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.' });
-      } else if (error.message === 'pw Çü½Ä Æ²¸²') {
-        return res
-          .status(412)
-          .send({ errorMessage: 'ÆÐ½º¿öµåÀÇ Çü½ÄÀÌ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.' });
-      } else if (error.message === 'pw ÀÏÄ¡ ¾ÈÇÔ') {
-        return res
-          .status(412)
-          .send({ errorMessage: 'ÆÐ½º¿öµå°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.' });
-      } else if (error.message === '´Ð³×ÀÓ Áßº¹µÊ') {
-        return res.status(412).send({ errorMessage: 'Áßº¹µÈ ´Ð³×ÀÓÀÔ´Ï´Ù.' });
-      } else if (error.message === '´Ð³×ÀÓ ºñ¹ø °°À½') {
-        return res
-          .status(412)
-          .send({ errorMessage: 'ÆÐ½º¿öµå¿¡ ´Ð³×ÀÓÀÌ Æ÷ÇÔµÇ¾î ÀÖ½À´Ï´Ù.' });
-      } else {
-        res
-          .status(400)
-          .send({ errorMessage: '¿äÃ»ÇÑ µ¥ÀÌÅÍ Çü½ÄÀÌ ¿Ã¹Ù¸£Áö ¾Ê½À´Ï´Ù.' });
-      }
-    }
-    //·Î±×ÀÎ
-    login = async (req, res, next) => {
-      try {
-        const { loginId, loginPw } = req.body;
-
-        const signin = await this.userService.login(loginId, loginPw);
-
-        res.cookie('token', signin);
-
-        if (typeof signin.message !== 'undefined') {
-          throw new Error('id³ª ºñ¹ø È®ÀÎÇØ');
-          return;
-        }
-
-        return res.status(201).send({ message: '·Î±×ÀÎ ¿Ï·á!' });
-      } catch (error) {
-        if (error.message === 'id³ª ºñ¹ø È®ÀÎÇØ') {
-          return res
-            .status(412)
-            .send({ errorMessage: '´Ð³×ÀÓ ¶Ç´Â ÆÐ½º¿öµå¸¦ È®ÀÎÇØÁÖ¼¼¿ä.' });
-        } else {
-          return res
-            .status(400)
-            .send({ errorMessage: '·Î±×ÀÎ¿¡ ½ÇÆÐÇÏ¿´½À´Ï´Ù.' });
-        }
-      }
-    };
-
-    logout = (req, res, next) => {
-      res.clearCookie('token');
-      // res.redirect('/'); <-- ·Î±×ÀÎÆäÀÌÁö ¸®´ÙÀÌ·ºÆ®. ÆäÀÌÁö Ãß°¡ ÇÊ¿ä.
-
-      res.status(200).json({ message: '·Î±×¾Æ¿ô ¿Ï·á!' });
-    };
-
-    // getUerPoint = async (req, res, next) => {
-    //   try {
-    //     const { userId } = req.user;
-    //     const point = await this.userService.getUserPoint(userId);
-    //     res.status(200).json({ point });
-    //   } catch (error) {
-    //     res.status(400).json({ errorMessage: error.message });
+    //   if (typeof signup.message !== 'undefined') {
+    //     throw signup;
     //   }
-    // };
+    //   return res.status(201).send({ message: 'íšŒì›ê°€ìž… ì™„ë£Œ!' });
+    // } catch (error) {
+    //   if (error.message === 'id í˜•ì‹ í‹€ë¦¼') {
+    //     return res
+    //       .status(412)
+    //       .send({ errorMessage: 'IDì˜ í˜•ì‹ì´ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.' });
+    //   } else if (error.message === 'pw í˜•ì‹ í‹€ë¦¼') {
+    //     return res
+    //       .status(412)
+    //       .send({ errorMessage: 'íŒ¨ìŠ¤ì›Œë“œì˜ í˜•ì‹ì´ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.' });
+    //   } else if (error.message === 'pw ì¼ì¹˜ ì•ˆí•¨') {
+    //     return res
+    //       .status(412)
+    //       .send({ errorMessage: 'íŒ¨ìŠ¤ì›Œë“œê°€ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.' });
+    //   } else if (error.message === 'ë‹‰ë„¤ìž„ ì¤‘ë³µë¨') {
+    //     return res.status(412).send({ errorMessage: 'ì¤‘ë³µëœ ë‹‰ë„¤ìž„ìž…ë‹ˆë‹¤.' });
+    //   } else if (error.message === 'ë‹‰ë„¤ìž„ ë¹„ë²ˆ ê°™ìŒ') {
+    //     return res
+    //       .status(412)
+    //       .send({ errorMessage: 'íŒ¨ìŠ¤ì›Œë“œì— ë‹‰ë„¤ìž„ì´ í¬í•¨ë˜ì–´ ìžˆìŠµë‹ˆë‹¤.' });
+    //   } else {
+    //     res
+    //       .status(400)
+    //       .send({ errorMessage: 'ìš”ì²­í•œ ë°ì´í„° í˜•ì‹ì´ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤.' });
+    //   }
+    // }
   };
+
+  //ë¡œê·¸ì¸
+  // login = async (req, res, next) => {
+  //   try {
+  //     const { loginId, loginPw } = req.body;
+
+  //     const signin = await this.userService.login(loginId, loginPw);
+
+  //     res.cookie('token', signin);
+
+  //     if (typeof signin.message !== 'undefined') {
+  //       throw new Error('idë‚˜ ë¹„ë²ˆ í™•ì¸í•´');
+  //       return;
+  //     }
+
+  //     return res.status(201).send({ message: 'ë¡œê·¸ì¸ ì™„ë£Œ!' });
+  //   } catch (error) {
+  //     if (error.message === 'idë‚˜ ë¹„ë²ˆ í™•ì¸í•´') {
+  //       return res
+  //         .status(412)
+  //         .send({ errorMessage: 'ë‹‰ë„¤ìž„ ë˜ëŠ” íŒ¨ìŠ¤ì›Œë“œë¥¼ í™•ì¸í•´ì£¼ì„¸ìš”.' });
+  //     } else {
+  //       return res
+  //         .status(400)
+  //         .send({ errorMessage: 'ë¡œê·¸ì¸ì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.' });
+  //     }
+  //   }
+  // };
+
+  //ë¡œê·¸ì•„ì›ƒ
+  // logout = (req, res, next) => {
+  //   res.clearCookie('token');
+  //   // res.redirect('/'); <-- ë¡œê·¸ì¸íŽ˜ì´ì§€ ë¦¬ë‹¤ì´ë ‰íŠ¸. íŽ˜ì´ì§€ ì¶”ê°€ í•„ìš”.
+
+  //   res.status(200).json({ message: 'ë¡œê·¸ì•„ì›ƒ ì™„ë£Œ!' });
+  // };
+
+  // getUerPoint = async (req, res, next) => {
+  //   try {
+  //     const { userId } = req.user;
+  //     const point = await this.userService.getUserPoint(userId);
+  //     res.status(200).json({ point });
+  //   } catch (error) {
+  //     res.status(400).json({ errorMessage: error.message });
+  //   }
+  // };
 }
 
 module.exports = UserController;

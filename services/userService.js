@@ -15,32 +15,34 @@ class UserService {
       email: findUser.email,
       password: findUser.password,
       name: findUser.name,
-      point: findUser.point,
+      // point: findUser.point,
       createdAt: findUser.createdAt,
       updatedAt: findUser.updatedAt,
     };
   };
 
   signup = async (email, password, confirmPw, name) => {
+    console.log(User);
+
     const idReg = /^[a-zA-Z0-9]{3,}$/;
     try {
-      if (!idReg.test(email)) {
-        throw new Error('id 형식 틀림');
-        return;
-      }
-      if (password.length < 4) {
-        throw new Error('pw 형식 틀림');
-        return;
-      }
-      if (password !== confirmPw) {
-        throw new Error('pw 일치 안함');
-        return;
-      }
+      //   if (!idReg.test(email)) {
+      //     throw new Error('id 형식 틀림');
+      //     return;
+      //   }
+      //   if (password.length < 4) {
+      //     throw new Error('pw 형식 틀림');
+      //     return;
+      //   }
+      //   if (password !== confirmPw) {
+      //     throw new Error('pw 일치 안함');
+      //     return;
+      //   }
 
-      if (password.includes(email)) {
-        throw new Error('닉네임 비번 같음');
-        return;
-      }
+      // // if (password.includes(email)) {
+      // //   throw new Error('닉네임 비번 같음');
+      // //   return;
+      // }
       const duplicateId = await this.userRepository.findByEmail(email);
       if (duplicateId) {
         throw new Error('닉네임 중복됨');

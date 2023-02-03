@@ -26,9 +26,9 @@ router.get('/me', (req, res) => {
   res.render('me.ejs');
 });
 
-// const userRouter = require('./userRoute');
+const userRouter = require('./userRoute');
+router.use('/', userRouter);
 
-// router.use('/', userRouter);
 module.exports = router;
 
 // 깃허브 - 내피시 폴더 - 작업폴더
