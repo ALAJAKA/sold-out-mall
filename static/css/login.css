@@ -1,0 +1,136 @@
+body a {
+  color: black;
+  text-decoration: none;
+}
+
+body a:hover {
+  color:rgb(61, 130, 247);
+}
+
+h1{
+  margin-bottom: 100px;
+
+}
+
+
+.login-form {
+  width: 400px;
+  margin: 50px auto;
+  text-align: center;
+  align-self: center;
+}
+.login-form input[type='email'],
+.login-form input[type='password'] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px 20px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.login-form input[type='submit'] {
+  font-size: 14px;
+  width: 100%;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #212529;
+  border: 1px solid #212529;
+  background-color: white;
+
+  height: 40px;
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.login-form input[type='submit']:hover {
+  /* background-color: #b9eded; */
+  background-color: rgb(61, 130, 247);
+  color: white;
+}
+
+.signup {
+  margin-top: 20px;
+  font-size: 14px;
+  width: 400px;
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #212529;
+  border: 1px solid #312f1f;
+  background-color: white;
+
+  height: 40px;
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.signup:hover {
+  background-color: rgb(61, 130, 247);
+  color: white;
+}
+
+.confirm-dialog {
+  /* Add some styling for the dialog box */
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  width: 300px;
+  padding: 20px;
+  text-align: center;
+}
+.confirm-dialog p {
+  /* Add some styling for the message */
+  margin: 0;
+  font-size: 16px;
+}
+.confirm-dialog button {
+  /* Add some styling for the buttons */
+  background-color: #4caf50;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  cursor: pointer;
+}
+.confirm-dialog button:hover {
+  background-color: #45a049;
+}
+
+/*
+
+2분할 + 반응형
+
+
+*/
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0 auto;
+  font-family: 'Fira Mono, monospace Open Sans, sans-serif';
+  background-color:rgba(255, 255, 255, 0.774)
+  max-width: 2000px;
+}
+
+.login-image {
+  background-image: url('/img/da8goyang_login_image.png');  
+  /* background-image: url(https://images.unsplash.com/photo-1592194996308-7b43878e84a6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80); */
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+.login-image,
+.login-form {
+  width: 45%;
+  box-sizing: border-box;
+}

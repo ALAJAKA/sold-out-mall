@@ -1,0 +1,492 @@
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>다8고양</title>
+        <link rel="stylesheet" href="/css/me.css" />
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    </head>
+<body>
+  
+ 
+
+ 
+
+  <!-- <div class="section_banner">
+  <img src={`http://localhost:1004/image/laudryfree.jpg`}> -->
+    <!-- <img src="http://localhost:1004/image/laundryfree.jpg" > -->
+    <!-- <img class="banner" src="http://localhost:3000/image/laundryfree.jpg" > -->
+    <!-- <img class="banner_image"
+      src="https://img.freepik.com/free-photo/close-up-white-folded-clean-towels_23-2148230572.jpg?w=900&t=st=1672879936~exp=1672880536~hmac=abdc23a00d5175bcc9000ed66cca732c37009574bd88e4546ae8876c4106240f"
+    /> 
+
+    <div class="banner_image"><img class="banner" src="https://img.freepik.com/free-vector/stylish-valentines-day-offer-with-half-price-sale_1017-36290.jpg?size=626&ext=jpg&uid=P10814912&ga=GA1.2.2144486555.1672809786&semt=ais"></div>
+  
+  </div> 
+  </div> -->
+
+
+
+
+ 
+  <div class="mypage_header">
+
+    <div class="header_title">
+      나의 정보
+    </div>
+    <div class="header_point">
+      주문 내역  
+    </div>
+
+    <div class="header_coupon">
+      할인쿠폰
+    </div>    
+    <div class="header_order">
+      포인트 P  
+    </div>
+
+
+  </div>
+
+
+
+  <div class="myinfo"> 
+     
+      <!-- <div class="customer_point"> 나의 정보 </div>  -->
+
+  </div>
+    
+    <div class="tabs-container">
+    
+    <div class="tabs">
+      <div class="tab" id="tab-1" onclick="showTab(1)">장바구니 보기</div>
+      <div class="tab" id="tab-2" onclick="showTab(2)">주문 히스토리</div>
+      <div class="tab" id="tab-3" onclick="showTab(3)">메세지 보내기</div>
+    </div>
+
+    <div class="tab-content">
+      
+    <div class="tab-pane" id="tab-pane-1">
+ 
+      <!-- Tab 2 content goes here -->
+      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <span class="pull-right"><strong>5</strong> items</span>
+                    <div class="cart_title"> 장바구니</div>
+                </div>
+                <div class="ibox-content">
+                    <div class="table-responsive">
+                        <table class="table shoping-cart-table" style="width:100%">
+                            <tbody>
+                            <tr>
+                                <td  style="width:10%">
+                                    <div class="cart-product-imitation">
+                                      <img class="product_thumnail" src="https://thumbnail10.coupangcdn.com/thumbnails/remote/120x120ex/image/retail/images/5558696011732037-e6b5f53b-3e7d-404d-b4b5-b59e1d28f2b5.jpg">
+                                    </div>
+                                </td>
+                                <td class="desc" style="width:50%">
+                                    <h3>
+                                    <a href="#" class="text-navy"> 
+                                      	
+                                        몰스킨 클래식 룰드 하드커버 노트 라지, 블랙 
+                          
+                                    </a>
+                                    </h3>
+                                    <p class="small">
+                                      
+                                    </p>
+                                    <dl class="small m-b-none">
+                                        <dt>내일 도착 보장</dt>
+                                        <dd>3시간 50분 내 주문 시</dd>
+                                    </dl>
+
+                                    <div class="m-t-sm">
+                                        <a href="#" class="text-muted"><i class="fa fa-gift"></i> 상품페이지 보기</a>
+                                        | 
+                                        <a href="#" class="text-muted"><i class="fa fa-trash"></i> 삭제하기</a>
+                                    </div>
+                                </td>
+
+                                <td class="cart_price"  style="width:10%">
+                                  $700,00
+                              </td>
+                              <td class="cart_quantity" style="width:15%">
+                                  <input type="text" class="form-control" placeholder="1">
+                              </td>
+                              <td class="cart_total price" style="width:15%">
+                                  <h4>
+                                      $70,00
+                                  </h4>
+                              </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+                <div class="ibox-content">
+                    <div class="table-responsive">
+                        <table class="table shoping-cart-table"  style="width:100%">
+
+                            <tbody>
+                            <tr>
+                                <td  style="width:10%">
+                                    <div class="cart-product-imitation">
+                                      <img class="product_thumnail" src="https://thumbnail7.coupangcdn.com/thumbnails/remote/120x120ex/image/retail/images/2018/03/23/10/7/97fef161-9f93-4e90-b9b2-98e6a2749ec0.jpg">
+                                    </div>
+                                </td>
+                                <td class="desc">
+                                    <h3>
+                                        <a href="#" class="text-navy" style="width:50%">
+                                          썬가드 모니터 블루라이트 차단 보안기 555x355mm, 혼합 색상, 1개
+                                        </a>
+                                    </h3>
+                                    <p class="small">
+                                      
+                                    </p>
+                                    <dl class="small m-b-none">
+                                        <dt>내일 도착 보장</dt>
+                                        <dd>3시간 50분 내 주문 시</dd>
+                                    </dl>
+
+                                    <div class="m-t-sm">
+                                        <a href="#" class="text-muted"><i class="fa fa-gift"></i> 상품페이지 보기</a>
+                                        |
+                                        <a href="#" class="text-muted"><i class="fa fa-trash"></i> 삭제하기</a>
+                                    </div>
+                                </td>
+                                <td class="cart_price" width="250"   style="width:10%">
+                                  $700,00
+                              </td>
+                              <td class="cart_quantity"  style="width:15%">
+                                  <input type="text" class="form-control" placeholder="1">
+                              </td>
+                              <td class="cart_total price" style="width:15%">
+                                  <h4>
+                                      $70,00
+                                  </h4>
+                              </td>
+
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+                <div class="ibox-content">
+                    <div class="table-responsive">
+                        <table class="table shoping-cart-table" style="width:100%" >
+
+                            <tbody>
+                            <tr>
+                                <td width="90" style="width:10%">
+                                  <div class="cart-product-imitation">
+                                    <img class="product_thumnail" src="https://thumbnail7.coupangcdn.com/thumbnails/remote/120x120ex/image/retail/images/2021/06/02/9/2/6f776888-ec35-471b-92c4-2d3e9cd2f694.jpg">
+                                  </div>
+                                </td>
+                                <td class="desc" style="width:50%">
+                                    <h3>
+                                        <a href="#" class="text-navy">
+                                          온라인박스 안전봉투, 50개, 9호(330 x 380 mm)
+                                        </a>
+                                    </h3>
+                                    <p class="small">
+                                       
+                                    </p>
+                                    <dl class="small m-b-none">
+                                        <dt>내일 도착 보장</dt>
+                                        <dd>3시간 50분 내 주문 시</dd>
+                                    </dl>
+
+                                    <div class="m-t-sm">
+                                        <a href="#" class="text-muted"><i class="fa fa-gift"></i> 상품페이지 보기</a>
+                                        |
+                                        <a href="#" class="text-muted"><i class="fa fa-trash"></i> 삭제하기</a>
+                                    </div>
+                                </td>
+
+                                <td class="cart_price" width="400" style="width:10%">
+                                  $700,00
+                              </td>
+                              <td class="cart_quantity" style="width:15%">
+                                  <input type="text" class="form-control" placeholder="1">
+                              </td>
+                              <td class="cart_total price" style="width:15%">
+                                  <h4>
+                                      $70,00
+                                  </h4>
+                              </td>
+
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+                <div class="ibox-content">
+                    <div class="table-responsive">
+                        <table class="table shoping-cart-table" style="width:100%">
+
+                            <tbody>
+                            <tr>
+                                <td width="90"  style="width:10%>
+                                  <div class="cart-product-imitation">
+                                    <img class="product_thumnail" src="https://thumbnail7.coupangcdn.com/thumbnails/remote/120x120ex/image/retail/images/8672072855370979-d384b09e-d32b-48d1-988d-ccd712ae469d.jpg">
+                                  </div>
+                                </td>
+                                <td class="desc" style="width:50%">
+                                    <h3>
+                                        <a href="#" class="text-navy" ></a>
+                                        	테팔 무선주전자 로프트 화이트 1.7L, KO2501KR
+                                        </a>
+                                    </h3>
+                                    <p class="small">
+                                   
+                                    </p>
+                                    <dl class="small m-b-none">
+                                        <dt>내일 도착 보장</dt>
+                                        <dd>3시간 50분 내 주문 시</dd>
+                                    </dl>
+
+                                    <div class="m-t-sm">
+                                        <a href="#" class="text-muted"><i class="fa fa-gift"></i> 상품페이지 보기</a>
+                                        |
+                                        <a href="#" class="text-muted"><i class="fa fa-trash"></i> 삭제하기</a>
+                                    </div>
+                                </td>
+
+                                <td class="cart_price" width="400"   style="width:10%">
+                                  $700,00
+                              </td>
+                              <td class="cart_quantity" style="width:15%">
+                                  <input type="text" class="form-control" placeholder="1">
+                              </td>
+                              <td class="cart_total price"  style="width:15%">
+                                  <h4>
+                                      $70,00
+                                  </h4>
+                              </td>
+
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+                <div class="ibox-content">
+                    <div class="table-responsive">
+                        <table class="table shoping-cart-table"  style="width:100%" > 
+
+                            <tbody>
+                            <tr>
+                                <td width="90" style="width:10%"> 
+                                  <div class="cart-product-imitation">
+                                    <img class="product_thumnail" src="https://thumbnail7.coupangcdn.com/thumbnails/remote/120x120ex/image/rs_quotation_api/pspawalt/10e18daa12324f8297e988158eb2d579.jpg">
+                                  </div>
+                                </td>
+                                <td class="desc" style="width:50%"> 
+                                    <h3>
+                                        <a href="#" class="text-navy">  
+                                          스타벅스 미디엄 로스트 아메리카노 원두커피믹스 1.1g, 100개입, 1개
+                                        </a>
+                                    </h3>
+                                    <p class="small">
+                                      
+                                    </p>
+                                    <dl class="small m-b-none">
+                                        <dt>내일 도착 보장</dt>
+                                        <dd>3시간 50분 내 주문 시</dd>
+                                    </dl>
+                                    <div class="m-t-sm">
+                                        <a href="#" class="text-muted"><i class="fa fa-gift"></i> 상품페이지 보기</a>
+                                        |
+                                        <a href="#" class="text-muted"><i class="fa fa-trash"></i> 삭제하기</a>
+                                    </div>
+                                </td>
+                                <td class="cart_price"width="400" style="width:10%">
+                                    $700,00
+                                </td>
+                                <td class="cart_quantity" style="width:15%">
+                                    <input type="text" class="form-control" placeholder="1">
+                                </td>
+                                <td class="cart_total price" style="width:15%"> 
+                                    <h4>
+                                        $70,00
+                                    </h4>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col-md-3">
+            <div class="ibox">
+
+                <div class="ibox-content">
+                    <span>
+                        총 주문 금액
+                    </span>
+                    <h2 class="font-bold">
+                        390,000원
+                    </h2>
+
+     
+ 
+                    <div class="m-t-sm">
+                        <div class="buttons">
+                          <button class="stylish-button">계속 쇼핑하기</button>                
+                          <button class="stylish-button1">구매 하기</button>
+          
+                        </div>
+                    </div>
+                </div>
+            </div>
+ 
+        </div>
+    </div>
+</div>
+</div>
+
+      
+    </div>
+
+
+
+    <div class="tab-pane" id="tab-pane-2">
+
+      <div class="board__parent">     
+        <!-- 글 한칸 -->  
+        <a class="board" href="/order/ ">
+          <div class="order_info">  
+                  <div class="product_info">
+                    <img class="product_thumbnail" src="https://thumbnail9.coupangcdn.com/thumbnails/remote/96x96ex/image/retail/images/1254708877959622-a641b963-bc4d-454c-8420-cd6a2a3fa5a6.jpg">
+                  </div>
+          
+                <div class="product_text">
+     
+                  <div class="product_name">
+                  차이나다 다용도 인테리어 유리병 
+                  </div>
+    
+                  <div class="order_detail"> 
+                      <div class="product_price">
+                        5,900 원 
+                      </div>
+
+                      <div class="product_quantity">
+                        2 개
+                      </div>
+                  </div> 
+                </div>            
+                <div class="cart"> 
+                   <button class="stylish-button2">장바구니 담기</button>
+                </div>
+
+        </div>
+
+
+          <!-- 여기서부터 유저 정보 -->
+          <div class="user">
+
+            <button class="stylish-button">구매하기</button>
+
+            
+            <button class="stylish-button">주문취소</button>
+
+          </div>
+
+
+        </a>
+
+    <!-- Tab 1 content goes here -->
+  </div>
+
+
+</div>
+
+
+
+    <div class="tab-pane" id="tab-pane-3">
+
+      <div class="chatroom-container">
+        <!-- <div class="header">
+ 
+        </div> -->
+        <div class="conversation-container">
+          <div class="message left">
+            <p>Hello! How are you?</p>
+          </div>
+          <div class="message right">
+            <p>I'm good, thanks. How about you?</p>
+          </div>
+        </div>
+        <div class="input-container">
+          <input type="text" placeholder="Type a message...">
+          <button>Send</button>
+        </div>
+      </div>
+      
+  
+ 
+
+    </div>
+  </div>
+  
+
+  
+  <!-- include the jQuery library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+ <script>
+    function showTab(tabNumber) {
+      // Hide all tab panes
+      var tabPanes = document.getElementsByClassName('tab-pane');
+      for (var i = 0; i < tabPanes.length; i++) {
+        tabPanes[i].classList.remove('active');
+      }
+
+      // Mark all tabs as inactive
+      var tabs = document.getElementsByClassName('tab');
+      for (var i = 0; i < tabs.length; i++) {
+        tabs[i].classList.remove('active');
+      }
+
+      // Show the selected tab pane
+      document.getElementById('tab-pane-' + tabNumber).classList.add('active');
+
+      // Mark the selected tab as active
+      document.getElementById('tab-' + tabNumber).classList.add('active');
+    }
+
+    // Show the first tab by default
+    showTab(1);
+
+
+
+ </script>
+
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script>
+ 
+ 
+
+ 
+
+ 
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
