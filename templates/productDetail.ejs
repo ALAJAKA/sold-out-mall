@@ -20,7 +20,6 @@
   </head>
   <style></style>
   <script>
-
     // 목록 받아오기 받아오면 뿌려줄때 갯수에 따라 페이지 네이션 되게함
     // function show_table(num){
     //   $.ajax({
@@ -39,6 +38,8 @@
     .btn-light{border: 1px solid black;}
     .btn-light:hover {border: 1px solid black;background-color: #ccc;}
   </style>
+  <script src="https://js.tosspayments.com/v1/payment"></script>
+  <script src="js/toss.js"></script>
   <body>
   <%- include('./topnav')%>
   <div class="container" style="margin-top: 20px;text-align: center;padding:0; height: 600px;" >
@@ -102,7 +103,7 @@
               <option value="3">3</option>
             </select>
           </div>
-          <div class="col-5"><button style="width: 100%;" type="button" class="btn btn-primary">구매하기</button></div>
+          <div class="col-5"><button style="width: 100%;" type="button" class="btn btn-primary" onclick="pay()">구매하기</button></div>
           <div class="col-5"><button style="width: 100%; " type="button" class="btn btn-light">장바구니</button></div>
         </div>
       </div>

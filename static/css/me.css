@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Mono:wght@500&family=Open+Sans:wght@400;700&display=swap');
 
-@import 'reset.css';
-@import 'nav.css';
-@import 'sorting.css';
-
 body {
   margin: 0 auto;
   font-family: 'Fira Mono, monospace Open Sans, sans-serif';

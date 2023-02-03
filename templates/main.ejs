@@ -19,6 +19,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
   </head>
   <style></style>
+  <script src="https://js.tosspayments.com/v1/payment"></script>
+  <script src="js/toss.js"></script>
   <script>
 
     // 페이지네이션
@@ -52,6 +54,9 @@
   </script>
   <body>
   <%- include('./topnav')%>
+  <div style="position: fixed; top: 300px; right: 150px; z-index: 9999;">
+    <%- include('./cartnav')%>
+  </div>
   <div class="container" style="margin-top: 20px;text-align: center" >
   </div>
   <div class="container-fluid" style="padding: 0">
@@ -77,6 +82,84 @@
   <div class="container" style="margin-top: 40px;text-align: center; height:300px;" >
     <h2 style="margin-bottom: 40px;">특 별 판 매 제 품</h2>
   <hr style="border: 1px solid black"/>
+    <div style="height:40px;"></div>
+    <div class="row" style="align-items: center">
+      <div class="col"  >
+        <div class="card" style="width: 18rem;" onclick="location.replace('/item')">
+          <img src="img/ted.jpeg" class="card-img-top" alt="이미지가 왜 안보일까" style="height:300px;">
+          <div class="card-body">
+            <p class="card-text">더미 데이터 입니다</p>
+            <p class="card-text">가격 10억이다</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" style="width: 18rem; ">
+          <img src="img/ted.jpeg" class="card-img-top" alt="이미지가 왜 안보일까" style="height:300px;">
+          <div class="card-body">
+            <p class="card-text">더미 데이터 입니다</p>
+            <p class="card-text">가격 10억이다</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" style="width: 18rem; ">
+          <img src="img/ted.jpeg" class="card-img-top" alt="이미지가 왜 안보일까" style="height:300px;">
+          <div class="card-body">
+            <p class="card-text">더미 데이터 입니다</p>
+            <p class="card-text">가격 10억이다</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" style="width: 18rem; ">
+          <img src="img/ted.jpeg" class="card-img-top" alt="이미지가 왜 안보일까" style="height:300px;">
+          <div class="card-body">
+            <p class="card-text">더미 데이터 입니다</p>
+            <p class="card-text">가격 10억이다</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="height:40px;"></div>
+    <div class="row" style="align-items: center">
+      <div class="col"  >
+        <div class="card" style="width: 18rem; ">
+          <img src="img/ted.jpeg" class="card-img-top" alt="이미지가 왜 안보일까" style="height:300px;">
+          <div class="card-body">
+            <p class="card-text">더미 데이터 입니다</p>
+            <p class="card-text">가격 10억이다</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" style="width: 18rem; ">
+          <img src="img/ted.jpeg" class="card-img-top" alt="이미지가 왜 안보일까" style="height:300px;">
+          <div class="card-body">
+            <p class="card-text">더미 데이터 입니다</p>
+            <p class="card-text">가격 10억이다</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" style="width: 18rem; ">
+          <img src="img/ted.jpeg" class="card-img-top" alt="이미지가 왜 안보일까" style="height:300px;">
+          <div class="card-body">
+            <p class="card-text">더미 데이터 입니다</p>
+            <p class="card-text">가격 10억이다</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" style="width: 18rem; ">
+          <img src="img/ted.jpeg" class="card-img-top" alt="이미지가 왜 안보일까" style="height:300px;">
+          <div class="card-body">
+            <p class="card-text">더미 데이터 입니다</p>
+            <p class="card-text">가격 10억이다</p>
+          </div>
+        </div>
+      </div>
+    </div>
     <div style="height:40px;"></div>
     <div class="row" style="align-items: center">
       <div class="col"  >
