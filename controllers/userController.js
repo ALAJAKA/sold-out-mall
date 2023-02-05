@@ -1,6 +1,6 @@
 const UserService = require('../services/userService');
 const UserRepository = require('../repositories/userRepository');
-
+const { comparePassword } = require('../auth/auth');
 class UserController {
   userService = new UserService();
   userRepository = new UserRepository();
@@ -51,14 +51,6 @@ class UserController {
     }
 
     try {
-      const exitUser = await this.userRepository.findByEmail(email);
-
-      if (!exitUser) {
-        return res.status(400).json({
-          message: `${email}은 등록된 이메일이 아닙니다. 회원가입해주세요.`,
-        });
-      }
-
       const { accessToken, user } = await this.userService.login(
         email,
         password
