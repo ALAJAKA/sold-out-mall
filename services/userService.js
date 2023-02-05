@@ -16,14 +16,13 @@ class UserService {
     this.userRepository = new UserRepository(User);
   }
 
+  async findByEmail(email) {
+    return this.userRepository.findByEmail(email);
+  }
+
   //회원가입
   signup = async (email, password, name, phone, address) => {
     try {
-      const exitUser = await this.userRepository.findByEmail(email);
-      if (exitUser) {
-        throw new Error(`${email}은 이미 등록된 이메일입니다.`);
-      }
-
       //비밀번호를 hash 함수로 암호화
       const encryptedPassword = await encryptPassword(password);
 

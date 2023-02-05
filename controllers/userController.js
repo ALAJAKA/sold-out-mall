@@ -12,6 +12,14 @@ class UserController {
     }
 
     try {
+      const exitUser = await this.userService.findByEmail(email);
+
+      if (exitUser) {
+        return res.status(400).json({
+          message: `${email}은 이미 등록된 이메일입니다.`,
+        });
+      }
+
       const { accessToken, user } = await this.userService.signup(
         email,
         password,
