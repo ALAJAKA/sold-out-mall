@@ -1,58 +1,49 @@
-const bcrypt = require('bcrypt');
-const saltRounds = 12;
-const jwt = require('jsonwebtoken');
 const { User } = require('../models'); //생성자입장
 const UserRepository = require('../repositories/userRepository');
 
+const {
+  createAccessToken,
+  encryptPassword,
+  comparePassword,
+} = require('../auth/auth');
+
+const config = require('../config/config');
+const dotenv = require('dotenv');
+dotenv.config();
+
 class UserService {
-  userRepository = new UserRepository(User);
+  constructor() {
+    this.userRepository = new UserRepository(User);
+  }
 
-  findByPk = async (userId) => {
-    const findUser = await this.userRepository.findByPk(userId);
-
-    return {
-      userId: findUser.userId,
-      email: findUser.email,
-      password: findUser.password,
-      name: findUser.name,
-      // point: findUser.point,
-      createdAt: findUser.createdAt,
-      updatedAt: findUser.updatedAt,
-    };
-  };
-
-  signup = async (email, password, confirmPw, name) => {
-    console.log(User);
-
-    const idReg = /^[a-zA-Z0-9]{3,}$/;
+  //회원가입
+  signup = async (email, password, name, phone, address) => {
     try {
-      //   if (!idReg.test(email)) {
-      //     throw new Error('id 형식 틀림');
-      //     return;
-      //   }
-      //   if (password.length < 4) {
-      //     throw new Error('pw 형식 틀림');
-      //     return;
-      //   }
-      //   if (password !== confirmPw) {
-      //     throw new Error('pw 일치 안함');
-      //     return;
-      //   }
+      const exitUser = await this.userRepository.findByEmail(email);
 
-      // // if (password.includes(email)) {
-      // //   throw new Error('닉네임 비번 같음');
-      // //   return;
-      // }
-      const duplicateId = await this.userRepository.findByEmail(email);
-      if (duplicateId) {
-        throw new Error('닉네임 중복됨');
-        return;
+      if (exitUser) {
+        throw new Error(`${email}은 이미 등록된 이메일입니다.`);
       }
-      const encryptedPassword = await bcrypt.hash(password, saltRounds);
-      await this.userRepository.createUser(email, encryptedPassword, name);
-      return true;
+
+      //비밀번호를 hash 함수로 암호화
+      const encryptedPassword = await encryptPassword(password);
+
+      //암호화된 비밀번호를 userRepository에 넘겨서 DB에 저장한다.
+      const user = await this.userRepository.createUser(
+        email,
+        encryptedPassword,
+        name,
+        phone,
+        address
+      );
+      console.log(user);
+      //회원가입성공 후  액세스토큰 생성
+      const accessToken = await createAccessToken(user.id.toString());
+      console.log('서비스단에서 액세스토큰나와라:', accessToken);
+
+      return { accessToken, user };
     } catch (error) {
-      return error;
+      throw error;
     }
   };
 
@@ -60,42 +51,19 @@ class UserService {
   login = async (email, password) => {
     try {
       const user = await this.userRepository.findByEmail(email);
-
-      const check = await bcrypt.compare(password, user.password);
-
-      if (user !== null) {
-        if (check) {
-          const token = jwt.sign(
-            { email: email, userId: user.userId, member: 'user' },
-            process.env.JWT_SECRET,
-            {
-              expiresIn: '1h',
-            }
-          );
-          console.log(token);
-          return token;
-        } else if (check === false) {
-          throw new Error('비번 확인해');
-        }
-      } else {
-        throw new Error('id 확인해');
+      if (!user) {
+        throw new Error('등록된 email이 아닙니다. 회원가입해주세요');
       }
-      return;
+      const isMatch = await comparePassword(password, user.password);
+      if (!isMatch) {
+        throw new Error('이메일 또는 비밀번호가 올바르지 않습니다.');
+      }
+      const accessToken = await createAccessToken(user.id.toString());
+      return { accessToken, user };
     } catch (error) {
-      return error;
+      throw error;
     }
   };
-
-  // getUserPoint = async (userId) => {
-  //   try {
-  //     const user = await this.userRepository.findByPk(userId);
-  //     if (!user) throw new Error('등록된 고객 정보가 없습니다.');
-
-  //     return user.point;
-  //   } catch (error) {
-  //     return error;
-  //   }
-  // };
 }
 
 module.exports = UserService;

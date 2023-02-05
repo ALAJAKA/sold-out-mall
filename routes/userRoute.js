@@ -4,13 +4,12 @@ const router = express.Router();
 
 const UserController = require('../controllers/userController');
 const userController = new UserController();
-console.log(userController);
 
 //회원가입 API
 router.post('/signup', userController.signup);
 
 // // //로그인 API
-// router.post('/login', userController.login);
+router.post('/login', userController.login);
 
 //로그아웃 API
 // router.get('/logout', userController.logout);
