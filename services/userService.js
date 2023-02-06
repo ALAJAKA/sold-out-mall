@@ -3,7 +3,7 @@ const UserRepository = require('../repositories/userRepository');
 
 const {
   createAccessToken,
-  // createRefreshToken,
+  createRefreshToken,
   encryptPassword,
   comparePassword,
 } = require('../auth/auth');
@@ -19,9 +19,6 @@ class UserService {
     try {
       const existUser = await this.userRepository.findByEmail(email);
       if (existUser) {
-        console.log('existUser에러디버깅하는중:', existUser);
-
-        console.log(email, password);
         throw new Error(`${email}은 이미 사용중인 이메일입니다.`);
       }
 
@@ -38,7 +35,6 @@ class UserService {
       );
       //회원가입성공 후  액세스토큰 생성
       const accessToken = await createAccessToken(user.id.toString());
-      console.log('서비스단에서 액세스토큰나와라:', accessToken);
       // const refreshToken = await createRefreshToken();
 
       return { user, accessToken };
@@ -51,7 +47,6 @@ class UserService {
   login = async (email, password) => {
     try {
       const user = await this.userRepository.findByEmail(email);
-      console.log('user에러나와라', user);
       if (!user) {
         throw new Error('등록된 email이 아닙니다. 회원가입해주세요');
       }
@@ -60,9 +55,9 @@ class UserService {
         throw new Error('이메일 또는 비밀번호가 올바르지 않습니다.');
       }
       const accessToken = await createAccessToken(user.id.toString());
-      // const refreshToken = await createRefreshToken();
+      const refreshToken = await createRefreshToken();
 
-      return { user, accessToken };
+      return { user, accessToken, refreshToken };
     } catch (error) {
       throw error;
     }

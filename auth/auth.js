@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const { signJwt } = require('./jwt');
-
+const jwt = require('jsonwebtoken');
 const config = require('../config/config');
 const dotenv = require('dotenv');
 dotenv.config();
@@ -12,10 +12,10 @@ const createAccessToken = async (id) => {
 };
 
 //회원가입 또는 로그인시 리프레시토큰 생성
-const createRefreshToken = async () => {
+const createRefreshToken = async (id) => {
   const refreshExpiresInSec = config.jwt.refreshExpiresInSec;
-  const refreshToken = jwt.sign({}, config.jwt.secretKey, {
-    refreshExpiresInSec,
+  const refreshToken = jwt.sign({ id }, config.jwt.secretKey, {
+    expiresIn: refreshExpiresInSec,
   });
 
   return refreshToken;
@@ -24,6 +24,14 @@ const createRefreshToken = async () => {
 //액세스토큰을 쿠키로 구워주자.
 const setAccessTokenCookie = async (res, token) => {
   res.cookie('accessToken', token, {
+    httpOnly: true,
+    secure: true,
+  });
+};
+
+//리프레시토큰을 쿠키로 구워주자.
+const setRefreshTokenCookie = async (res, token) => {
+  res.cookie('refreshToken', token, {
     httpOnly: true,
     secure: true,
   });
@@ -63,6 +71,7 @@ module.exports = {
   createAccessToken,
   createRefreshToken,
   setAccessTokenCookie,
+  setRefreshTokenCookie,
   encryptPassword,
   comparePassword,
 };

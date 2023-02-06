@@ -12,7 +12,7 @@ router.post('/signup', userController.signup);
 router.post('/login', userController.login);
 
 //로그아웃 API
-// router.get('/logout', userController.logout);
+router.get('/logout', userController.logout);
 
 // router.get('/me', authMiddleware, userController.getUserPoint);
 
