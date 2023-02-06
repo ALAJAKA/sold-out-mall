@@ -5,8 +5,13 @@
         <div class="col"></div>
         <div class="col"></div>
         <div class="col" style="text-align: right">
+            <%if(0){%>
             <button type="button" class="btn btn-primary" style="margin-right:10px" onclick="location.replace('/login')">로그인</button>
             <button type="button" class="btn btn-info" onclick="location.replace('/signup')">회원가입</button>
+            <%}else if(1){%>
+                <button type="button" class="btn btn-primary" style="margin-right:10px" onclick="location.replace('/me')">마이페이지</button>
+                <button type="button" class="btn btn-info" onclick="location.replace('/signup')">로그아웃</button>
+            <%}%>
         </div>
     </div>
 </div>

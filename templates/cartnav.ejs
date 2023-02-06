@@ -1,23 +1,23 @@
-<div class="container" style="margin-top: 20px;text-align: center; border: 1px solid #ccc;border-radius: 5px;  padding: 10px; background: #fff; max-height: 500px; overflow: hidden" >
+<div class="container" id="carts" style="margin-top: 20px;text-align: center; border: 1px solid #ccc;border-radius: 5px;  padding: 10px; background: #fff; max-height: 500px; overflow: hidden" >
     <div style="max-height:420px;overflow: scroll" >
-    <h4>장바구니</h4>
-    <h6>2건</h6>
-    <div class="card" style="width: 10rem;">
-        <img src="https://cdn.011st.com/11dims/resize/200x200/quality/75/11src/pd/v2/8/7/3/8/8/6/EkJdC/3673873886_B.jpg" class="card-img-top " alt="..." >
-        <div class="card-body" >
-            <h5 class="card-title">더미데이터2</h5>
-            <p class="card-text" style="width:8rem;overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">제품설명 어마ㅣㅇㅁ니ㅏ움나ㅓ룹짋쥛ㅈ</p>
+        <h4>장바구니</h4>
+        <h6 id="cartCount"></h6>
+        <div class="card" style="width: 10rem;">
+            <img src="https://cdn.011st.com/11dims/resize/200x200/quality/75/11src/pd/v2/8/7/3/8/8/6/EkJdC/3673873886_B.jpg" class="card-img-top " alt="..." >
+            <div class="card-body" >
+                <h5 class="card-title">상품명</h5>
+                <p class="card-text" style="width:8rem;overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">상품설명</p>
+                <p class="card-text" id="price" style="width:8rem;overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">가격</p>
+            </div>
         </div>
+        <!--    <div style="height:20px;"></div>-->
+        <!--   <div class="card" style="width: 10rem;">-->
+        <!-- <img src="https://cdn.011st.com/11dims/resize/200x200/quality/75/11src/pd/v2/8/7/3/8/8/6/EkJdC/3673873886_B.jpg" class="card-img-top " alt="..." >-->
+        <!--       <div class="card-body" >-->
+        <!--            <h5 class="card-title">더미데이터2</h5>-->
+        <!--            <p class="card-text" style="width:8rem;overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">제품설명 어마ㅣㅇㅁ니ㅏ움나ㅓ룹짋쥛ㅈ</p>-->
+        <!--        </div>-->
+        <!--    </div>-->
     </div>
-    <div style="height:20px;"></div>
-   <div class="card" style="width: 10rem;">
- <img src="https://cdn.011st.com/11dims/resize/200x200/quality/75/11src/pd/v2/8/7/3/8/8/6/EkJdC/3673873886_B.jpg" class="card-img-top " alt="..." >
-       <div class="card-body" >
-            <h5 class="card-title">더미데이터2</h5>
-            <p class="card-text" style="width:8rem;overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">제품설명 어마ㅣㅇㅁ니ㅏ움나ㅓ룹짋쥛ㅈ</p>
-        </div>
-    </div>
-    </div>
-    <div style="height:50px;"></div>
-    <a href="#" class="btn btn-primary" style="position: absolute; top:360px; left:50px;"onclick="pay()">구매하기</a>
+    <a href="#" class="btn btn-primary" onclick="pay()">구매하기</a>
 </div>

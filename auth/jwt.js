@@ -9,11 +9,6 @@ signJwt = async (id) => {
     const accessToken = jwt.sign({ id }, config.jwt.secretKey, {
       expiresIn: config.jwt.expiresInSec,
     });
-
-    console.log(
-      'JWT accessToken 어떻게 생겼나보자 객체인가 스트링인가',
-      accessToken
-    );
     return accessToken;
   } catch (error) {
     console.error(error);

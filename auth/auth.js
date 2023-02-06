@@ -8,10 +8,7 @@ dotenv.config();
 
 //회원가입 또는 로그인시 액세스 토큰 생성
 createAccessToken = async (id) => {
-  console.log('id값은 string되어야해:', id);
-  console.log(id.toString());
   const accessToken = signJwt(id.toString());
-  console.log('auth.js에서 accessToken나와라', accessToken);
   return accessToken;
 };
 
