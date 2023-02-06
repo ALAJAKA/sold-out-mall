@@ -25,7 +25,7 @@ class UserService {
         throw new Error(`${email}은 이미 사용중인 이메일입니다.`);
       }
 
-      //비밀번호를 hash 함수로 암호화
+      //비밀번호를 encryptPassword 함수로 암호화
       const encryptedPassword = await encryptPassword(password);
 
       //암호화된 비밀번호를 userRepository에 넘겨서 DB에 저장한다.

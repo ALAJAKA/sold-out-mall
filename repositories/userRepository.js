@@ -10,10 +10,8 @@ class UserRepository {
       const user = await this.UserModel.findOne({
         where: { email },
       });
-      console.log('레포지토리 user', user);
       return user;
     } catch (error) {
-      console.log('error나와라', error);
       return error;
     }
   };
