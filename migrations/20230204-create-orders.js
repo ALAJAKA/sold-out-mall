@@ -30,6 +30,9 @@ module.exports = {
       cartId: {
         type: Sequelize.INTEGER
       },
+      userId: {
+        type: Sequelize.INTEGER
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -61,6 +64,7 @@ module.exports = {
       onDelete: 'cascade',
       onUpdate: 'cascade',
   });
+
     });
   },
   async down(queryInterface, Sequelize) {

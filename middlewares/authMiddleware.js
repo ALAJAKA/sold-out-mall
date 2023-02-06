@@ -1,5 +1,8 @@
 const { verifyJwt } = require('./auth/jwt');
 const UserRepository = require('../repositories/UserRepository');
+const domain = require("domain");
+const {development} = require("../config/config");
+const {getVersion} = require("jest");
 const userRepository = new UserRepository(UserModel);
 
 const AUTH_ERROR = { message: 'Authentication Error' };
@@ -30,3 +33,5 @@ isAuth = async (req, res, next) => {
 module.exports = {
   isAuth,
 };
+
+
