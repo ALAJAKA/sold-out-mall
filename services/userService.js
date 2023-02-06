@@ -12,16 +12,15 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 class UserService {
-  constructor() {
-    this.userRepository = new UserRepository(User);
-  }
+  userRepository = new UserRepository(User);
 
   //회원가입
   signup = async (email, password, name, phone, address) => {
     try {
       const existUser = await this.userRepository.findByEmail(email);
       if (existUser) {
-        console.log(existUser);
+        console.log('existUser에러디버깅하는중:', existUser);
+
         console.log(email, password);
         throw new Error(`${email}은 이미 사용중인 이메일입니다.`);
       }
@@ -52,6 +51,7 @@ class UserService {
   login = async (email, password) => {
     try {
       const user = await this.userRepository.findByEmail(email);
+      console.log('user에러나와라', user);
       if (!user) {
         throw new Error('등록된 email이 아닙니다. 회원가입해주세요');
       }
