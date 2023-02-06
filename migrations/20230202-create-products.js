@@ -12,17 +12,38 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
+      img1: {
+        type: Sequelize.STRING
+      },
+      img2: {
+        type: Sequelize.STRING
+      },
+      img3: {
+        type: Sequelize.STRING
+      },
       price: {
         type: Sequelize.INTEGER
       },
-      info: {
-        type: Sequelize.STRING
-      },
-      img: {
-        type: Sequelize.STRING
-      },
       stock: {
         type: Sequelize.INTEGER
+      },
+      img4: {
+        type: Sequelize.STRING
+      },
+      img5: {
+        type: Sequelize.STRING
+      },
+      img6: {
+        type: Sequelize.STRING
+      },
+      img7: {
+        type: Sequelize.STRING
+      },
+      img8: {
+        type: Sequelize.STRING
+      },
+      info: {
+        type: Sequelize.STRING
       },
       userId: {
         type: Sequelize.INTEGER

@@ -18,17 +18,38 @@ module.exports = (sequelize, DataTypes) => {
     name: {
       type:DataTypes.STRING
     },
+    img1: {
+      type:DataTypes.STRING
+    },
+    img2: {
+      type:DataTypes.STRING
+    },
+    img3: {
+      type:DataTypes.STRING
+    },
     price: {
       type:DataTypes.INTEGER
     },
-    info: {
-      type:DataTypes.STRING
-    },
-    img: {
-      type:DataTypes.STRING
-    },
     stock: {
       type:DataTypes.INTEGER
+    },
+    img4: {
+      type:DataTypes.STRING
+    },
+    img5: {
+      type:DataTypes.STRING
+    },
+    img6: {
+      type:DataTypes.STRING
+    },
+    img7: {
+      type:DataTypes.STRING
+    },
+    img8: {
+      type:DataTypes.STRING
+    },
+    info: {
+      type:DataTypes.STRING
     },
     userId: {
       type:DataTypes.INTEGER
