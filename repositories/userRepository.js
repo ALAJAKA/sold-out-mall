@@ -5,6 +5,7 @@ class UserRepository {
     this.UserModel = UserModel;
   }
 
+  //에러해결완료!
   findByEmail = async (email) => {
     try {
       const user = await this.UserModel.findOne({
