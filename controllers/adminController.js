@@ -6,7 +6,6 @@ class AdminController {
     const list = await this.adminService.getList();
     res.send(list);
   };
-
   getOne = async (req, res) => {
     const { productId } = req.params;
     const one = await this.adminService.getOne(productId);

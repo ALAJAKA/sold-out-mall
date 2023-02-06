@@ -3,7 +3,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('orders', {
-      orderId: {
+      id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
@@ -24,13 +24,15 @@ module.exports = {
       count: {
         type: Sequelize.INTEGER
       },
-      cartId: {
-        type: Sequelize.INTEGER
-      },
       productId: {
         type: Sequelize.INTEGER
       },
-
+      cartId: {
+        type: Sequelize.INTEGER
+      },
+      userId: {
+        type: Sequelize.INTEGER
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -39,6 +41,30 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
+    }).then(async () => {
+      await queryInterface.addConstraint('orders', {
+        fields: ['productId'],
+        type: 'foreign key',
+        name: 'products_orders_fk',
+        references: {
+          table: 'products',
+          field: 'id',
+        },
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      });
+    await queryInterface.addConstraint('orders', {
+      fields: ['cartId'],
+      type: 'foreign key',
+      name: 'carts_orders_fk',
+      references: {
+        table: 'carts',
+        field: 'id',
+      },
+      onDelete: 'cascade',
+      onUpdate: 'cascade',
+  });
+
     });
   },
   async down(queryInterface, Sequelize) {

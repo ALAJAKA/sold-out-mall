@@ -3,7 +3,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('carts', {
-      cartId: {
+      id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
@@ -26,6 +26,19 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
+    }).then(async () => {
+      await queryInterface.addConstraint('carts', {
+        fields: ['productId'],
+        type: 'foreign key',
+        name: 'products_carts_fk',
+        references: {
+          table: 'products',
+          field: 'id',
+        },
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      });
+
     });
   },
   async down(queryInterface, Sequelize) {
