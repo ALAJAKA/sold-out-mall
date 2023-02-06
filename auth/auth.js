@@ -12,9 +12,9 @@ const createAccessToken = async (id) => {
 };
 
 //회원가입 또는 로그인시 리프레시토큰 생성
-const createRefreshToken = async (id) => {
+const createRefreshToken = async () => {
   const refreshExpiresInSec = config.jwt.refreshExpiresInSec;
-  const refreshToken = jwt.sign({ id }, config.jwt.secretKey, {
+  const refreshToken = jwt.sign({}, config.jwt.secretKey, {
     expiresIn: refreshExpiresInSec,
   });
 
