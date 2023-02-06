@@ -4,10 +4,10 @@ const config = require('../config/config');
 const dotenv = require('dotenv');
 dotenv.config();
 
-signJwt = async (id) => {
+const signJwt = async (id) => {
   try {
     const accessToken = jwt.sign({ id }, config.jwt.secretKey, {
-      expiresIn: config.jwt.expiresInSec,
+      expiresIn: config.jwt.accessExpiresInSec,
     });
     return accessToken;
   } catch (error) {
@@ -16,7 +16,7 @@ signJwt = async (id) => {
   }
 };
 
-async function verifyJwt(token) {
+const verifyJwt = async (token) => {
   return new Promise((resolve, reject) => {
     jwt.verify(token, config.jwt.secretKey, (err, value) => {
       if (err) {
@@ -26,7 +26,7 @@ async function verifyJwt(token) {
       }
     });
   });
-}
+};
 
 module.exports = {
   signJwt,

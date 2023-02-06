@@ -3,11 +3,11 @@ const UserRepository = require('../repositories/userRepository');
 
 const {
   createAccessToken,
+  createRefreshToken,
   encryptPassword,
   comparePassword,
 } = require('../auth/auth');
 
-const config = require('../config/config');
 const dotenv = require('dotenv');
 dotenv.config();
 
@@ -34,12 +34,12 @@ class UserService {
         phone,
         address
       );
-      console.log(user);
       //회원가입성공 후  액세스토큰 생성
       const accessToken = await createAccessToken(user.id.toString());
       console.log('서비스단에서 액세스토큰나와라:', accessToken);
+      const refreshToken = await createRefreshToken();
 
-      return { accessToken, user };
+      return { user, accessToken, refreshToken };
     } catch (error) {
       throw error;
     }

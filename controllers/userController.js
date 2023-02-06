@@ -20,7 +20,7 @@ class UserController {
         });
       }
 
-      const { accessToken, user } = await this.userService.signup(
+      const { user, accessToken, refreshToken } = await this.userService.signup(
         email,
         password,
         confirmPw,
@@ -29,9 +29,12 @@ class UserController {
         address
       );
 
-      return res
-        .status(201)
-        .json({ accessToken, user, message: '회원가입이 완료되었습니다.' });
+      return res.status(201).json({
+        user,
+        accessToken,
+        refreshToken,
+        message: '회원가입이 완료되었습니다.',
+      });
     } catch (error) {
       console.log(error);
       return res.status(500).json({ message: '회원가입에 실패했습니다.' });
@@ -48,13 +51,16 @@ class UserController {
     }
 
     try {
-      const { accessToken, user } = await this.userService.login(
+      const { user, accessToken, refreshToken } = await this.userService.login(
         email,
         password
       );
-      return res
-        .status(200)
-        .json({ accessToken, user, message: '로그인에 성공했습니다.' });
+      return res.status(200).json({
+        user,
+        accessToken,
+        refreshToken,
+        message: '로그인에 성공했습니다.',
+      });
     } catch (error) {
       return res.status(401).json({ message: error.message });
     }
