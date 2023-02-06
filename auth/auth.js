@@ -3,7 +3,6 @@ const { signJwt } = require('./jwt');
 
 const config = require('../config/config');
 const dotenv = require('dotenv');
-const { Config } = require('aws-sdk');
 dotenv.config();
 
 //회원가입 또는 로그인시 액세스 토큰 생성

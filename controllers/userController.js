@@ -1,4 +1,7 @@
 const UserService = require('../services/userService');
+
+const { setAccessTokenCookie } = require('../auth/auth');
+
 class UserController {
   userService = new UserService();
 
@@ -12,15 +15,15 @@ class UserController {
     }
 
     try {
-      const exitUser = await this.userService.findByEmail(email);
+      // const exitUser = await this.userService.findByEmail(email);
 
-      if (exitUser) {
-        return res.status(400).json({
-          message: `${email}은 이미 등록된 이메일입니다.`,
-        });
-      }
+      // if (exitUser) {
+      //   return res.status(400).json({
+      //     message: `${email}은 이미 등록된 이메일입니다.`,
+      //   });
+      // }
 
-      const { user, accessToken, refreshToken } = await this.userService.signup(
+      const { user, accessToken } = await this.userService.signup(
         email,
         password,
         confirmPw,
@@ -29,15 +32,17 @@ class UserController {
         address
       );
 
+      setAccessTokenCookie(res, accessToken);
+      // setAccessTokenCookie(res, refreshToken);
+
       return res.status(201).json({
         user,
         accessToken,
-        refreshToken,
         message: '회원가입이 완료되었습니다.',
       });
     } catch (error) {
       console.log(error);
-      return res.status(500).json({ message: '회원가입에 실패했습니다.' });
+      return res.status(401).json({ message: error.message });
     }
   };
 
@@ -51,38 +56,34 @@ class UserController {
     }
 
     try {
-      const { user, accessToken, refreshToken } = await this.userService.login(
+      const { user, accessToken } = await this.userService.login(
         email,
         password
       );
-      return res.status(200).json({
+
+      setAccessTokenCookie(res, accessToken);
+      // setAccessTokenCookie(res, refreshToken);
+
+      return res.status(201).json({
         user,
         accessToken,
-        refreshToken,
         message: '로그인에 성공했습니다.',
       });
     } catch (error) {
       return res.status(401).json({ message: error.message });
     }
   };
+
+  //로그아웃
+  logout = async (req, res) => {
+    try {
+      res.clearCookie('accessToken');
+      res.clearCookie('refreshToken');
+      return res.status(200).redirect('/');
+    } catch (error) {
+      return res.status(500).json({ message: '로그아웃에 실패했습니다.' });
+    }
+  };
 }
 
 module.exports = UserController;
-
-//로그아웃
-// logout = (req, res, next) => {
-//   res.clearCookie('token');
-//   // res.redirect('/'); <-- 로그인페이지 리다이렉트. 페이지 추가 필요.
-
-//   res.status(200).json({ message: '로그아웃 완료!' });
-// };
-
-// getUerPoint = async (req, res, next) => {
-//   try {
-//     const { userId } = req.user;
-//     const point = await this.userService.getUserPoint(userId);
-//     res.status(200).json({ point });
-//   } catch (error) {
-//     res.status(400).json({ errorMessage: error.message });
-//   }
-// };

@@ -3,7 +3,7 @@ const UserRepository = require('../repositories/userRepository');
 
 const {
   createAccessToken,
-  createRefreshToken,
+  // createRefreshToken,
   encryptPassword,
   comparePassword,
 } = require('../auth/auth');
@@ -16,13 +16,16 @@ class UserService {
     this.userRepository = new UserRepository(User);
   }
 
-  async findByEmail(email) {
-    return this.userRepository.findByEmail(email);
-  }
-
   //회원가입
   signup = async (email, password, name, phone, address) => {
     try {
+      const existUser = await this.userRepository.findByEmail(email);
+      if (existUser) {
+        console.log(existUser);
+        console.log(email, password);
+        throw new Error(`${email}은 이미 사용중인 이메일입니다.`);
+      }
+
       //비밀번호를 hash 함수로 암호화
       const encryptedPassword = await encryptPassword(password);
 
@@ -37,9 +40,9 @@ class UserService {
       //회원가입성공 후  액세스토큰 생성
       const accessToken = await createAccessToken(user.id.toString());
       console.log('서비스단에서 액세스토큰나와라:', accessToken);
-      const refreshToken = await createRefreshToken();
+      // const refreshToken = await createRefreshToken();
 
-      return { user, accessToken, refreshToken };
+      return { user, accessToken };
     } catch (error) {
       throw error;
     }
@@ -57,10 +60,16 @@ class UserService {
         throw new Error('이메일 또는 비밀번호가 올바르지 않습니다.');
       }
       const accessToken = await createAccessToken(user.id.toString());
-      return { accessToken, user };
+      // const refreshToken = await createRefreshToken();
+
+      return { user, accessToken };
     } catch (error) {
       throw error;
     }
+  };
+
+  findByEmail = async (email) => {
+    return await this.userRepository.findByEmail(email);
   };
 }
 
