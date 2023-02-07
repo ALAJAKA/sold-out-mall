@@ -1,7 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const isAuth = require('../middlewares/authMiddleware3');
-// const isNotAuth = require('../middlewares/authMiddleware3');
+// const isNotAuth = require('../middlewares/authMiddleware');
+// const isAuth = require('../middlewares/authMiddleware');
+
+const { isLoggedIn } = require('../middlewares/loginCheckMiddleware');
+const { isNotLoggedIn } = require('../middlewares/loginCheckMiddleware');
 
 const UserController = require('../controllers/userController');
 const userController = new UserController();
@@ -16,11 +20,12 @@ router.post('/signup', userController.signup);
 //로그인 API
 router.post('/login', userController.login);
 //로그아웃 API
-router.get('/logout', userController.logout);
+router.get('/logout', isLoggedIn, userController.logout);
 
 //Front 마이페이지
-router.get('/me', isAuth, (req, res) => {
+router.get('/me', isLoggedIn, isAuth, (req, res) => {
   console.log('isAuth 미들웨어 타고 넘어오는 가?', isAuth);
+
   try {
     userId = req.userId;
     accessToken = req.accessToken;
@@ -41,11 +46,11 @@ router.get('/me', isAuth, (req, res) => {
   }
 });
 //Front
-router.get('/login', (req, res) => {
+router.get('/login', isNotLoggedIn, (req, res) => {
   res.render('login.ejs');
 });
 
-router.get('/signup', (req, res) => {
+router.get('/signup', isNotLoggedIn, (req, res) => {
   res.render('signup.ejs');
 });
 module.exports = router;

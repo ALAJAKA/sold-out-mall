@@ -16,7 +16,6 @@ const isAuth = async (req, res, next) => {
   if (!extractedStringFromCookie) {
     const token = '';
     return res.render('main', { all: '', token: token });
-    n;
   }
 
   const [accessTokenPart] = extractedStringFromCookie
@@ -45,6 +44,7 @@ const isAuth = async (req, res, next) => {
       console.log(user);
       return res.status(401).json(AUTH_ERROR);
     }
+
     req.userId = user.id; //custom data
     req.accessToken = accessToken; //custom data
     req.refreshToken = refreshToken; //custom data
@@ -61,6 +61,8 @@ const isAuth = async (req, res, next) => {
 };
 
 module.exports = isAuth;
+
+//너 사용자 정보가 뭐야?
 
 // const authHeader = req.get('Authorization');
 

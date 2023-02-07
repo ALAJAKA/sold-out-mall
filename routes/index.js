@@ -7,6 +7,7 @@ const adminRouter = require('./adminRoute');
 const cartRouter = require('./cartRoute');
 const orderRouter = require('./orderRoute');
 const isAuth = require('../middlewares/authMiddleware3');
+const { isNotAuth } = require('../middlewares/authMiddleware');
 
 // 메인페이지
 router.use('/api', isAuth, (req, res) => {
@@ -37,11 +38,11 @@ router.use('/admin', (req, res) => {
   res.render('admin');
 });
 
-router.get('/login', (req, res) => {
+router.get('/login', isNotAuth, (req, res) => {
   res.render('login.ejs');
 });
 
-router.get('/signup', (req, res) => {
+router.get('/signup', isNotAuth, (req, res) => {
   res.render('signup.ejs');
 });
 

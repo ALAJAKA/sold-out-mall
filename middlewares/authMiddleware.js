@@ -10,7 +10,6 @@ const AUTH_ERROR = {
 const isNotAuth = async (req, res, next) => {
   const extractedStringFromCookie = req.headers.cookie;
   if (!extractedStringFromCookie) {
-    const token = '';
     next();
   } else {
     return res.redirect('/api').json({ message: '이미 로그인하셨습니다.' });
