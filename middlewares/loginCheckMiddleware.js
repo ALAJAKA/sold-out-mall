@@ -18,7 +18,7 @@ exports.isNotLoggedIn = (req, res, next) => {
     return res.send(
       `<script>
           alert("이미 로그인한 상태입니다.");
-          window.location.href = "/me";
+          window.location.href = "/api";
         </script>`
     );
   }

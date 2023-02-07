@@ -10,6 +10,7 @@ const AUTH_ERROR = {
 const isAuth = async (req, res, next) => {
   const extractedStringFromCookie = req.headers.cookie;
 
+  console.log("extractedStringFromCookie",extractedStringFromCookie)
   if (!extractedStringFromCookie) {
     const token = '';
     return res.render('main', { all: '', token: token });

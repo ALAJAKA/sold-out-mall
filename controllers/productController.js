@@ -9,8 +9,9 @@ class ProductController{
 
     getOne = async (req,res)=>{
         const {productId} =req.params;
+        if(productId === undefined || null)
+            return res.json({msg:'해당 페이지는 존재 하지 않습니다.'});
         const one = await this.productService.getOne(productId);
-        console.log(one);
         res.render('productDetail');
     }
 }

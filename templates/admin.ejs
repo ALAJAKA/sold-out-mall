@@ -26,7 +26,6 @@
 
 <script>
 
-
 </script>
 
 
@@ -58,7 +57,6 @@
       data: {},
       success: function (res) {
         const products = res;
-        console.log(products);
         for (let i = 0; i < products.length; i++) {
           const id = products[i].id;
           const name = products[i].name;
@@ -67,7 +65,7 @@
           const stock = products[i].stock;
           let temp = `<tr>
       <td>${name}</td>
-      <td><img src="${img}"alt="더미다" style="widtg:200px;height:200px;">  </td>
+      <td><img src="${img}"alt="아" style="widtg:200px;height:200px;">  </td>
       <td>${price}</td>
       <td>${stock}</td>
       <td><a href="#"class="btn btn-primary">수정</a></td>
