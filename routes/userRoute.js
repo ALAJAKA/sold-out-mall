@@ -1,21 +1,43 @@
 const express = require('express');
 const router = express.Router();
-// const authMiddleware = require('../middlewares/authMiddleware');
-
+const isAuth = require('../middlewares/authMiddleware');
 const UserController = require('../controllers/userController');
 const userController = new UserController();
 
+const { setAccessTokenCookie, setRefreshTokenCookie } = require('../auth/auth');
+
+// const OrderController = require('../controllers/orderController');
+// const orderController = new OrderController();
+
 //회원가입 API
 router.post('/signup', userController.signup);
-
-// // //로그인 API
+//로그인 API
 router.post('/login', userController.login);
-
 //로그아웃 API
 router.get('/logout', userController.logout);
 
-// router.get('/me', authMiddleware, userController.getUserPoint);
+//Front 마이페이지
+router.get('/me', isAuth, (req, res) => {
+  console.log('isAuth 미들웨어 타고 넘어오는 가?', isAuth);
+  try {
+    userId = req.userId;
+    accessToken = req.accessToken;
+    console.log('isAuth타고 넘어오는 사람(userId)을 찾아보자 ', userId); //1
+    // accessToken = req.headers.authorization.split(' ')[1];
 
+    console.log('header에서 accessToken을 뽑아보자', accessToken);
+
+    return res.status(200).render('me.ejs', {
+      token: accessToken,
+      // data: user,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      message: 'Server Error',
+    });
+  }
+});
 //Front
 router.get('/login', (req, res) => {
   res.render('login.ejs');
@@ -24,9 +46,4 @@ router.get('/login', (req, res) => {
 router.get('/signup', (req, res) => {
   res.render('signup.ejs');
 });
-
-router.get('/me', (req, res) => {
-  res.render('me.ejs');
-});
-
 module.exports = router;

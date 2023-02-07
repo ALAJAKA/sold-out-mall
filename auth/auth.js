@@ -12,9 +12,10 @@ const createAccessToken = async (id) => {
 };
 
 //회원가입 또는 로그인시 리프레시토큰 생성
-const createRefreshToken = async () => {
+const createRefreshToken = async (id) => {
   const refreshExpiresInSec = config.jwt.refreshExpiresInSec;
-  const refreshToken = jwt.sign({}, config.jwt.secretKey, {
+  // id = id.toString();
+  const refreshToken = jwt.sign({ id }, config.jwt.secretKey, {
     expiresIn: refreshExpiresInSec,
   });
 
@@ -36,10 +37,6 @@ const setRefreshTokenCookie = async (res, token) => {
     secure: true,
   });
 };
-
-// Access Token 검증 => 미들웨어
-
-// Refresh Token 검증
 
 //패스워드 암호화
 const encryptPassword = async (password) => {

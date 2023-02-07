@@ -17,16 +17,24 @@ const signJwt = async (id) => {
 };
 
 const verifyJwt = async (token) => {
-  return new Promise((resolve, reject) => {
-    jwt.verify(token, config.jwt.secretKey, (err, value) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(value);
-      }
-    });
-  });
+  try {
+    const decoded = await jwt.verify(token, config.jwt.secretKey);
+    return decoded;
+  } catch (error) {
+    throw error;
+  }
 };
+// const verifyJwt = async (token) => {
+//   return new Promise((resolve, reject) => {
+//     jwt.verify(token, config.jwt.secretKey, (err, value) => {
+//       if (err) {
+//         reject(err);
+//       } else {
+//         resolve(value);
+//       }
+//     });
+//   });
+// };
 
 module.exports = {
   signJwt,
@@ -44,3 +52,15 @@ module.exports = {
 //     });
 //   });
 // }
+
+// const verifyJwt = async (token) => {
+//   return new Promise((resolve, reject) => {
+//     jwt.verify(token, config.jwt.secretKey, (err, value) => {
+//       if (err) {
+//         reject(err);
+//       } else {
+//         resolve(value);
+//       }
+//     });
+//   });
+// };

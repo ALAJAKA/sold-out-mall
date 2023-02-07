@@ -9,17 +9,17 @@ const orderRouter = require('./orderRoute');
 
 // 메인페이지
 router.use('/api', (req, res) => {
-  res.render('main',{all:''});
+  res.render('main', { all: '' });
 });
 //회원 관련 컨트롤러로
 router.use('/', userRouter);
 //상품관련 컨트롤러로
-router.use('/product',productRouter);
+router.use('/product', productRouter);
 // 어드민 페이지관련 컨트롤러
-router.use('/admin',adminRouter);
+router.use('/admin', adminRouter);
 // 카트 관련 페이지
-router.use('/cart',cartRouter);
-router.use('/order',orderRouter);
+router.use('/cart', cartRouter);
+router.use('/order', orderRouter);
 
 router.use('/item', (req, res) => {
   res.render('productDetail');
@@ -42,7 +42,6 @@ router.get('/signup', (req, res) => {
 router.get('/me', (req, res) => {
   res.render('me.ejs');
 });
-
 
 module.exports = router;
 

@@ -64,6 +64,7 @@ class UserController {
 
       setAccessTokenCookie(res, accessToken);
       setRefreshTokenCookie(res, refreshToken);
+      console.log('이게 쿠키가 뭘까?', setAccessTokenCookie(res, accessToken));
 
       return res.status(201).json({
         user,
@@ -82,7 +83,7 @@ class UserController {
     try {
       res.clearCookie('accessToken');
       res.clearCookie('refreshToken');
-      return res.status(200).redirect('/');
+      return res.status(200).redirect('/api');
     } catch (error) {
       return res.status(500).json({ message: '로그아웃에 실패했습니다.' });
     }
