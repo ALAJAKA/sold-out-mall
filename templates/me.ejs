@@ -453,19 +453,8 @@
   <script>
 
     const token = '<%- token %>';
-    console.log('프론트에서 token을가져오는지 찍어보자.', token);
   
-    axios.get('/me', {
-      headers: {
-        'Authorization': `Bearer ${token}`
-      }
-    })
-    .then((response) => {
-      console.log(response.data);  // prints the data returned by the server
-    })
-    .catch((error) => {
-      console.error(error);  // prints the error if the request fails
-    });
+   
   </script>
   
 

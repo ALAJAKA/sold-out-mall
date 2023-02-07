@@ -1,9 +1,9 @@
-const { User } = require('../models'); //생성자입장
+const { User } = require('../models');
 const UserRepository = require('../repositories/userRepository');
 
 const {
   createAccessToken,
-  createRefreshToken,
+  // createRefreshToken,
   encryptPassword,
   comparePassword,
 } = require('../auth/auth');
@@ -37,7 +37,7 @@ class UserService {
       const accessToken = await createAccessToken(user.id.toString());
       // const refreshToken = await createRefreshToken();
 
-      return { user, accessToken };
+      return { accessToken };
     } catch (error) {
       throw error;
     }
@@ -55,9 +55,9 @@ class UserService {
         throw new Error('이메일 또는 비밀번호가 올바르지 않습니다.');
       }
       const accessToken = await createAccessToken(user.id.toString());
-      const refreshToken = await createRefreshToken();
+      // const refreshToken = await createRefreshToken();
 
-      return { user, accessToken, refreshToken };
+      return { accessToken };
     } catch (error) {
       throw error;
     }

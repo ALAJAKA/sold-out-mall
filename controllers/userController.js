@@ -23,7 +23,7 @@ class UserController {
         });
       }
 
-      const { user, accessToken, refreshToken } = await this.userService.signup(
+      const { accessToken } = await this.userService.signup(
         email,
         password,
         confirmPw,
@@ -33,12 +33,11 @@ class UserController {
       );
 
       setAccessTokenCookie(res, accessToken);
-      setRefreshTokenCookie(res, refreshToken);
+      // setRefreshTokenCookie(res, refreshToken);
 
       return res.status(201).json({
-        user,
         accessToken,
-        refreshToken,
+        // refreshToken,
         message: '회원가입이 완료되었습니다.',
       });
     } catch (error) {
@@ -57,19 +56,13 @@ class UserController {
     }
 
     try {
-      const { user, accessToken, refreshToken } = await this.userService.login(
-        email,
-        password
-      );
+      const { accessToken } = await this.userService.login(email, password);
 
       setAccessTokenCookie(res, accessToken);
-      setRefreshTokenCookie(res, refreshToken);
-      console.log('이게 쿠키가 뭘까?', setAccessTokenCookie(res, accessToken));
+      // setRefreshTokenCookie(res, refreshToken);
 
       return res.status(201).json({
-        user,
         accessToken,
-        refreshToken,
         message: '로그인에 성공했습니다.',
       });
     } catch (error) {

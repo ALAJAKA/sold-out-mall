@@ -31,6 +31,14 @@ class UserRepository {
     }
   };
 
+  // updateUser = async (id, name, address, phone) => {
+  //   const updateUser = await userModel.update(
+  //     { name, address, phone },
+  //     { where: { id: id } }
+  //   );
+  //   return updateUser;
+  // };
+
   findByPk = async (id) => {
     const user = await this.UserModel.findByPk(id);
 

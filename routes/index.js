@@ -6,15 +6,15 @@ const productRouter = require('./productRoute');
 const adminRouter = require('./adminRoute');
 const cartRouter = require('./cartRoute');
 const orderRouter = require('./orderRoute');
-const isAuth = require('../middlewares/authMiddleware3');
-const { isNotAuth } = require('../middlewares/authMiddleware');
+const isAuth = require('../middlewares/authMiddleware');
+const {
+  isLoggedIn,
+  isNotLoggedIn,
+} = require('../middlewares/loginCheckMiddleware');
 
 // 메인페이지
 router.use('/api', isAuth, (req, res) => {
-  console.log('메인페이지가 isAuth 미들웨어 타고 넘어오는 가?', isAuth);
-
   const token = req.accessToken;
-  console.log('token찍어보자', token);
   res.render('main', { all: '', token: token });
 });
 
@@ -36,14 +36,6 @@ router.use('/order', (req, res) => {
 });
 router.use('/admin', (req, res) => {
   res.render('admin');
-});
-
-router.get('/login', isNotAuth, (req, res) => {
-  res.render('login.ejs');
-});
-
-router.get('/signup', isNotAuth, (req, res) => {
-  res.render('signup.ejs');
 });
 
 module.exports = router;

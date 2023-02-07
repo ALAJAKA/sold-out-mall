@@ -23,5 +23,3 @@ exports.isNotLoggedIn = (req, res, next) => {
     );
   }
 };
-
-//너 로그인 해써?
