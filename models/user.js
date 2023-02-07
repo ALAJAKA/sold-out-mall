@@ -9,15 +9,15 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(db) {
         db.User.hasMany(db.Product,{
-            foreignKey:{name:'userId',allowNull:false},
+            foreignKey:{name:'userId'},
             sourceKey:'id'
         });
         db.Order.hasMany(db.Order,{
-            foreignKey:{name:'userId',allowNull:false},
+            foreignKey:{name:'userId'},
             sourceKey:'id'
         });
         db.Order.hasMany(db.Cart,{
-            foreignKey:{name:'userId',allowNull:false},
+            foreignKey:{name:'userId'},
             sourceKey:'id'
         });
     }

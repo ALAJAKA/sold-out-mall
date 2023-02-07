@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(db) {
       // define association here
       db.Cart.hasMany(db.Product,{
-        foreignKey:{name:'cartId',allowNull:false},
+        foreignKey:{name:'cartId'},
         sourceKey:'id'
       });
       db.Cart.belongsTo(db.User,{
@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
         targetKey:'id'
       });
       db.Cart.hasOne(db.Order,{
-        foreignKey:{name:'cartId',allowNull:false},
+        foreignKey:{name:'cartId'},
         sourceKey:'id'
       });
     }
