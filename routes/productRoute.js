@@ -3,16 +3,15 @@ const router = express.Router();
 
 const ProductController = require('../controllers/productController');
 const productController = new ProductController();
-// const s3Uploader = require('../middlewares/s3Uploader');
+const isAuth = require('../middlewares/authMiddleware');
+const {isLoggedIn} = require("../middlewares/loginCheckMiddleware");
 
 // 현재 URL /product
 
-// 상품 등록 페이지
-router.post('/fileUpload', productController.productCreate);
 // 상품 조회 페이지
-router.get('/list',productController.getList);
-// 상품 상세 조회 페이지
+router.get('/list',isAuth,isLoggedIn,productController.getList);
 
-router.get("/:productId",productController.getOne);
+// 상품 상세 조회 페이지
+router.get("/:productId",isAuth,isLoggedIn,productController.getOne);
 
 module.exports = router;

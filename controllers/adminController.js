@@ -9,24 +9,33 @@ class AdminController {
     const list = await this.adminService.getList();
     res.send(list);
   };
-  getOne = async (req, res) => {
-    const { productId } = req.params;
-    const one = await this.adminService.getOne(productId);
-    console.log(one);
-    res.render('productDetail');
-  };
+  delOne = async (req,res)=>{
+    const {id} = req.body;
+    await this.adminService.delOne(id);
+    res.send({msg:"삭제 완료"});
+  }
+  create = async (req,res)=>{
+    const {productName,price,stock,info} = req.body;
+    const list =[];
+    list.push(productName);
+    list.push(price);
+    list.push(stock);
+    list.push(info);
+    const result = await this.adminService.create(list,req.files);
+    return res.redirect('/admin');
+  }
 
   getUserList;
 
-  updateUserInfo = async (req, res) => {
-    try {
-      const { id, name, address, phone } = req.body;
-      await this.usersService.updateUserInfo(id, name, address, phone);
-      res.status(201).json({ message: '회원 정보 수정이 완료되었습니다.' });
-    } catch {
-      return res.status(401).json({ message: error.message });
-    }
-  };
+  // updateUserInfo = async (req, res) => {
+  //   try {
+  //     const { id, name, address, phone } = req.body;
+  //     await this.userService.updateUserInfo(id, name, address, phone);
+  //     res.status(201).json({ message: '회원 정보 수정이 완료되었습니다.' });
+  //   } catch {
+  //     return res.status(401).json({ message: error.message });
+  //   }
+  // };
 
   deleteUser = async (req, res) => {
     try {
