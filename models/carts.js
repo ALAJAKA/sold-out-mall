@@ -11,8 +11,18 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(db) {
       // define association here
-      Cart.belongsTo(db.Product,{foreignKey:'productId'});
-      Cart.hasMany(db.User,{foreignKey:'productId'});
+      db.Cart.hasMany(db.Product,{
+        foreignKey:{name:'cartId'},
+        sourceKey:'id'
+      });
+      db.Cart.belongsTo(db.User,{
+        foreignKey:{name:'userId'},
+        targetKey:'id'
+      });
+      db.Cart.hasOne(db.Order,{
+        foreignKey:{name:'cartId'},
+        sourceKey:'id'
+      });
     }
   }
   Cart.init({
@@ -22,9 +32,6 @@ module.exports = (sequelize, DataTypes) => {
     price: {
       type:DataTypes.INTEGER
     },
-    productId:{
-      type:DataTypes.INTEGER
-    }
   }, {
     sequelize,
     tableName: 'carts',

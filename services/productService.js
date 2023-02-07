@@ -1,8 +1,8 @@
 const ProductRepository = require('../repositories/productRepository');
-const {products} = require('../models');
+const {Product} = require('../models');
 class ProductService{
 
-    productRepository = new ProductRepository(products);
+    productRepository = new ProductRepository(Product);
     productCreate = async ()=>{
 
     }
