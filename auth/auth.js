@@ -18,7 +18,6 @@ const createRefreshToken = async (id) => {
   const refreshToken = jwt.sign({ id }, config.jwt.secretKey, {
     expiresIn: refreshExpiresInSec,
   });
-
   return refreshToken;
 };
 
