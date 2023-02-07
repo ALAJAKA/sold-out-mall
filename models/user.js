@@ -8,14 +8,25 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(db) {
-        User.belongsTo(db.Cart,{foreignKey:'cartId'});
-        User.belongsTo(db.Order,{foreignKey:'orderId'});
+        db.User.hasMany(db.Product,{
+            foreignKey:{name:'userId',allowNull:false},
+            sourceKey:'id'
+        });
+        db.Order.hasMany(db.Order,{
+            foreignKey:{name:'userId',allowNull:false},
+            sourceKey:'id'
+        });
+        db.Order.hasMany(db.Cart,{
+            foreignKey:{name:'userId',allowNull:false},
+            sourceKey:'id'
+        });
     }
   }
   User.init(
     {
       email: {
-          type:DataTypes.STRING
+          type:DataTypes.STRING,
+          allowNull:false
       },
       name: {
           type:DataTypes.STRING
@@ -32,14 +43,9 @@ module.exports = (sequelize, DataTypes) => {
       point: {
           type:DataTypes.INTEGER
       },
-      cartId: {
-          type:DataTypes.INTEGER
-      },
-      orderId: {
-          type:DataTypes.INTEGER
-      },
       role:{
-          type:DataTypes.INTEGER
+          type:DataTypes.INTEGER,
+          default:0
       },
     },
     {
