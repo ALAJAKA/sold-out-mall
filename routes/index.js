@@ -6,11 +6,17 @@ const productRouter = require('./productRoute');
 const adminRouter = require('./adminRoute');
 const cartRouter = require('./cartRoute');
 const orderRouter = require('./orderRoute');
+const isAuth = require('../middlewares/authMiddleware3');
 
 // 메인페이지
-router.use('/api', (req, res) => {
-  res.render('main', { all: '' });
+router.use('/api', isAuth, (req, res) => {
+  console.log('메인페이지가 isAuth 미들웨어 타고 넘어오는 가?', isAuth);
+
+  const token = req.accessToken;
+  console.log('token찍어보자', token);
+  res.render('main', { all: '', token: token });
 });
+
 //회원 관련 컨트롤러로
 router.use('/', userRouter);
 //상품관련 컨트롤러로
@@ -37,10 +43,6 @@ router.get('/login', (req, res) => {
 
 router.get('/signup', (req, res) => {
   res.render('signup.ejs');
-});
-
-router.get('/me', (req, res) => {
-  res.render('me.ejs');
 });
 
 module.exports = router;
