@@ -23,16 +23,16 @@
   table,td,th,td {border: 1px solid black; text-align: center; padding: 10px;}
 </style>
 
-
 <script>
-
-  const token = '<%- token = 0 %>';
-
+  const token = '<%- token = 1 %>';
  
 </script>
 
 
 <script>
+  $(document).ready(function(){
+    show_product();
+  });
 
   function aa(){
     $("#productManagement").css('display','block');
@@ -50,10 +50,69 @@
     $("#productRegister").css('display','none');
     $("#productManagement").css('display','none');
   }
+  function show_product(){
+    $.ajax({
+      type: 'GET',
+      url: '/admin/products',
+      data: {},
+      success: function (res) {
+        const products = res;
+        for (let i = 0; i < products.length; i++) {
+          const id = products[i].id;
+          const name = products[i].name;
+          const img = products[i].img1;
+          const price = products[i].price;
+          const stock = products[i].stock;
+          let temp = `<tr>
+      <td>${name}</td>
+      <td><img src="${img}"alt="아" style="widtg:200px;height:200px;">  </td>
+      <td>${price}</td>
+      <td>${stock}</td>
+      <td><a href="#"class="btn btn-primary">수정</a></td>
+      <td><a class="btn btn-danger" onclick="del(${id})">삭제</a></td>
+    </tr>`
+          $('#products').append(temp);
+        }
+      }
+    });
+  }
+
+  function del(id){
+    $.ajax({
+      type: 'DELETE',
+      url: '/admin/'+id+'/productErase',
+      data: {id:id},
+      success: function (res) {
+        alert(res.msg);
+        window.location.reload();
+      }
+    });
+  }
 </script>
 <body>
-<%- include('./topnav')%>
+  <div>
 
+    <div class="container" style="margin-top: 20px;text-align: center; height:50px; line-height: 50px;" >
+      <div class="row">
+          </div>
+
+          <div class="col"></div>
+          <div class="col"></div>
+          <div class="col" style="text-align: right">
+              <%if(!token){%>
+
+              <button type="button" class="btn btn-primary" style="margin-right:10px" onclick="location.replace('/login')">로그인</button>
+              <button type="button" class="btn btn-info" onclick="location.replace('/signup')">회원가입</button>
+              <%}else if(token){%>
+
+                  <button type="button" class="btn btn-info" onclick="location.replace('/logout')">Admin 로그아웃</button>
+              <%}%>
+
+
+          </div>
+      </div>
+  </div>
+  
 <div class="container" style="margin-top: 20px;text-align: center" >
   <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
@@ -87,7 +146,7 @@
 <!--  상품관리-->
 <div class="container"id="productManagement" style="margin-top: 20px;text-align: center" >
   <!--    우선 상품 관리 페이지 -->
-  <table style="border: 1px solid black;">
+  <table style="border: 1px solid black;" id="products">
     <tr style="border: 1px solid black;">
       <th>상품명</th>
       <th>상품이미지</th>
@@ -96,6 +155,7 @@
       <th>정보 수정</th>
       <th>삭제</th>
     </tr>
+<<<<<<< HEAD
     <tr>
       <td>더미데이터</td>
       <td><img src="https://cdn.011st.com/11dims/resize/150x150/quality/75/11src/pd/v2/8/7/3/8/8/6/EkJdC/3673873886_B.jpg"alt="더미다"> </td>
@@ -112,6 +172,8 @@
       <td><a href="#"class="btn btn-primary">수정</a></td>
       <td><a href="#"class="btn btn-danger">삭제</a></td>
     </tr>
+=======
+>>>>>>> f48f6ccda3bf90770f67353ddbfef43ab3c6862b
   </table>
 </div>
 <!--  회원 관리-->
@@ -120,45 +182,70 @@
     <tr style="border: 1px solid black;">
       <th>회원아이디</th>
       <th>이름</th>
-      <th>주소</th>
+      <th>총 구매 금액</th>
       <th>전화번호</th>
+      <th>자기소개</th>
       <th>정보 수정</th>
       <th>삭제</th>
     </tr>
     <tr>
-      <td>더미데이터</td>
-      <td>흑우</td>
-      <td>더미</td>
-      <td>더미</td>
-      <td><a href="/admin/edit"class="btn btn-primary">수정</a></td>
+      <td>rocketcoupang</td>
+      <td>김범석</td>
+      <td>$777,271</td>
+      <td>010-5417-5678</td>
+      <td>CEO of Coupang</td>
+      <td><a href="#"class="btn btn-primary">수정</a></td>
       <td><a href="#"class="btn btn-danger">삭제</a></td>
     </tr>
-    
+    <tr>
+      <td>marketkurly234</td>
+      <td>김슬아</td>
+      <td>$281,023</td>
+      <td>010-5477-5678</td>
+      <td>마켓컬리 CEO</td>
+      <td><a href="#"class="btn btn-primary">수정</a></td>
+      <td><a href="#"class="btn btn-danger">삭제</a></td>
+    </tr>
+    <tr>
+      <td>emart123</td>
+      <td>정용진</td>
+      <td>$800,000</td>
+      <td>010-5778-55678</td>
+      <td>신세계 그룹 부회장</td>
+      <td><a href="#"class="btn btn-primary">수정</a></td>
+      <td><a href="#"class="btn btn-danger">삭제</a></td>
+    </tr>
+    <tr>
+      <td>amazon123</td>
+      <td>Jeff Bezos</td>
+      <td>$197,213</td>
+      <td>010-5789-5200</td>
+      <td>CEO of Amazon</td>
+      <td><a href="#"class="btn btn-primary">수정</a></td>
+      <td><a href="#"class="btn btn-danger">삭제</a></td>
+    </tr>
+
 
 
   </table>
 </div>
 <!--  상품 등록-->
 <div class="container"id="productRegister" style="margin-top: 20px;text-align: center; display: none" >
-  <form action="" method="POST">
+  <form action="/admin/product" method='post' enctype="multipart/form-data">
     <input type="text" name="productName" class="form-control" placeholder="상품명을 적어주세요"><br/>
-    <input class="form-control" type="file" multiple><br/>
-    <input class="form-control" type="file" multiple><br/>
-    <input class="form-control" type="file" multiple><br/>
+    <input class="form-control" type="file" multiple name="photos"><br/>
+    <input class="form-control" type="file" multiple name="photos"><br/>
+    <input class="form-control" type="file" multiple name="photos"><br/>
     <input type="number" name="price" class="form-control" placeholder="가격을 적어주세요"><br/>
     <input type="number" name="stock" class="form-control" placeholder="재고를 적어주세요"><br/>
-    <input class="form-control" type="file" multiple><br/>
-    <input class="form-control" type="file" multiple><br/>
-    <input class="form-control" type="file" multiple><br/>
-    <input class="form-control" type="file" multiple><br/>
-    <input class="form-control" type="file" multiple><br/>
-    <textarea class="form-control" placeholder="제품 설명을 적어주세요"></textarea><br/>
+    <input class="form-control" type="file" multiple name="photos2"><br/>
+    <input class="form-control" type="file" multiple name="photos2"><br/>
+    <input class="form-control" type="file" multiple name="photos2"><br/>
+    <input class="form-control" type="file" multiple name="photos2"><br/>
+    <input class="form-control" type="file" multiple name="photos2"><br/>
+    <textarea name="info" class="form-control" placeholder="제품 설명을 적어주세요"></textarea><br/>
     <button type="submit" class="btn btn-primary mb-3">상품 등록하기</button>
   </form>
 </div>
-
-
-
-
 </body>
 </html>

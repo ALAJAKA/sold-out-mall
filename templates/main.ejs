@@ -26,13 +26,9 @@
 
   const token = '<%- token %>';
 
-
 </script>
 
-
-
 <script>
-
 
   // 페이지네이션
   $(document).ready(function(){
@@ -62,12 +58,12 @@
           const productId = products[i].id;
           const name = products[i].name;
           const price = products[i].price;
-          const img = products[i].img;
+          const img1 = products[i].img1;
           const info = products[i].info;
           let temp = `<div class="col">
         <div class="card" style="width: 18rem;" onclick="location.href='/product/${productId}'">
-<!--          <img src="img/ted.jpeg" class="card-img-top" alt="이미지가 왜 안보일까" style="height:300px;">-->
-            <div>img</div>
+          <img src="img/keyboard.png" class="card-img-top" alt="이미지가 왜 안보일까" style="height:300px;">
+            <div>샘플 데이터 명</div>
             <div class="card-body">
             <p class="card-text">${name}</p>
             <p class="card-text">${info}</p>
@@ -129,7 +125,11 @@
 <div style="position: fixed; top: 300px; right: 150px; z-index: 9999;">
   <%- include('./cartnav')%>
 </div>
+<<<<<<< HEAD
 <div class="container" style="margin-top: 20px;margin-bottom:20pxtext-align: center" >
+=======
+<div class="container" style="margin-top: 20px;margin-bottom:20px ;text-align: center" >
+>>>>>>> f48f6ccda3bf90770f67353ddbfef43ab3c6862b
 </div>
 <div class="container-fluid" style="padding: 0; "><!--image slide -->
   <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" >
@@ -155,15 +155,7 @@
   <h2 style="margin-bottom: 40px;">특 별 판 매 제 품</h2>
   <hr style="border: 1px solid black"/>
   <div class="row" style="align-items: center; margin-top:40px;"id = "products">
-    <div class="col">
-      <div class="card" style="width: 18rem;" onclick="location.replace('/item')">
-        <img src="img/ted.jpeg" class="card-img-top" alt="이미지가 왜 안보일까" style="height:300px;">
-        <div class="card-body">
-          <p class="card-text">더미 데이터 입니다</p>
-          <p class="card-text">가격 10억이다</p>
-        </div>
-      </div>
-    </div>
+
   </div>
 
 </div><!--container end-->

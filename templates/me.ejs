@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -10,30 +8,57 @@
         <link rel="stylesheet" href="/css/me.css" />
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    </head>
+    
+    
+        <div>
+
+          <div class="container" style="margin-top: 20px;text-align: center; height:50px; line-height: 50px;" >
+            <div class="row">
+                </div>
+
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col" style="text-align: right">
+                    <%if(!token){%>
+
+                    <button type="button" class="btn btn-primary" style="margin-right:10px" onclick="location.replace('/login')">로그인</button>
+                    <button type="button" class="btn btn-info" onclick="location.replace('/signup')">회원가입</button>
+                    <%}else if(token){%>
+
+                        <button type="button" class="btn btn-info" onclick="location.replace('/logout')">로그아웃</button>
+                    <%}%>
+
+
+                </div>
+            </div>
+        </div>
+        
+        
+      </head>
+
+    
 <body>
-  
+
+
  
 
- 
 
-  <!-- <div class="section_banner">
-  <img src={`http://localhost:1004/image/laudryfree.jpg`}> -->
-    <!-- <img src="http://localhost:1004/image/laundryfree.jpg" > -->
-    <!-- <img class="banner" src="http://localhost:3000/image/laundryfree.jpg" > -->
-    <!-- <img class="banner_image"
-      src="https://img.freepik.com/free-photo/close-up-white-folded-clean-towels_23-2148230572.jpg?w=900&t=st=1672879936~exp=1672880536~hmac=abdc23a00d5175bcc9000ed66cca732c37009574bd88e4546ae8876c4106240f"
-    /> 
-
-    <div class="banner_image"><img class="banner" src="https://img.freepik.com/free-vector/stylish-valentines-day-offer-with-half-price-sale_1017-36290.jpg?size=626&ext=jpg&uid=P10814912&ga=GA1.2.2144486555.1672809786&semt=ais"></div>
-  
-  </div> 
-  </div> -->
+  <script>
+      $(document).ready(function(){
+         console.log(document.cookie);
+         console.log(document.cookies);
+      });
+  </script>
 
 
-  <%- include('./topnav')%>
- 
+
+
+</div>
+
   <div class="mypage_header">
+
+
+
 
     <div class="header_title">
       나의 정보
@@ -48,14 +73,13 @@
     <div class="header_order">
       포인트 P  
     </div>
-
-
   </div>
 
 
 
+
   <div class="myinfo"> 
-     
+
       <!-- <div class="customer_point"> 나의 정보 </div>  -->
 
   </div>
@@ -407,23 +431,13 @@
             <button class="stylish-button">주문취소</button>
 
           </div>
-
-
         </a>
-
     <!-- Tab 1 content goes here -->
   </div>
-
-
 </div>
-
-
-
     <div class="tab-pane" id="tab-pane-3">
-
       <div class="chatroom-container">
         <!-- <div class="header">
- 
         </div> -->
         <div class="conversation-container">
           <div class="message left">
@@ -438,13 +452,8 @@
           <button>Send</button>
         </div>
       </div>
-      
-  
- 
-
     </div>
   </div>
-  
 
 
   <script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script>
@@ -453,13 +462,13 @@
   <script>
 
     const token = '<%- token %>';
+    console.log('여기서는 토큰이 뭐라고 찍히는 것일까? ', token)
   
    
   </script>
   
 
 
-  
   <!-- include the jQuery library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
@@ -470,25 +479,18 @@
       for (var i = 0; i < tabPanes.length; i++) {
         tabPanes[i].classList.remove('active');
       }
-
       // Mark all tabs as inactive
       var tabs = document.getElementsByClassName('tab');
       for (var i = 0; i < tabs.length; i++) {
         tabs[i].classList.remove('active');
       }
-
       // Show the selected tab pane
       document.getElementById('tab-pane-' + tabNumber).classList.add('active');
-
       // Mark the selected tab as active
       document.getElementById('tab-' + tabNumber).classList.add('active');
     }
-
     // Show the first tab by default
     showTab(1);
-
-
-
  </script>
 
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script>
