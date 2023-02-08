@@ -25,6 +25,11 @@
 <script>
 
   const token = '<%- token %>';
+
+</script>
+
+<script>
+
   // 페이지네이션
   $(document).ready(function(){
     show_table();
@@ -57,8 +62,8 @@
           const info = products[i].info;
           let temp = `<div class="col">
         <div class="card" style="width: 18rem;" onclick="location.href='/product/${productId}'">
-          <img src="${img1}" class="card-img-top" alt="이미지가 왜 안보일까" style="height:300px;">
-            <div>img</div>
+          <img src="img/keyboard.png" class="card-img-top" alt="이미지가 왜 안보일까" style="height:300px;">
+            <div>샘플 데이터 명</div>
             <div class="card-body">
             <p class="card-text">${name}</p>
             <p class="card-text">${info}</p>

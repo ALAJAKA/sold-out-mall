@@ -8,8 +8,40 @@
         <link rel="stylesheet" href="/css/me.css" />
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    </head>
+    
+    
+        <div>
+
+          <div class="container" style="margin-top: 20px;text-align: center; height:50px; line-height: 50px;" >
+            <div class="row">
+                </div>
+
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col" style="text-align: right">
+                    <%if(!token){%>
+
+                    <button type="button" class="btn btn-primary" style="margin-right:10px" onclick="location.replace('/login')">로그인</button>
+                    <button type="button" class="btn btn-info" onclick="location.replace('/signup')">회원가입</button>
+                    <%}else if(token){%>
+
+                        <button type="button" class="btn btn-info" onclick="location.replace('/logout')">로그아웃</button>
+                    <%}%>
+
+
+                </div>
+            </div>
+        </div>
+        
+        
+      </head>
+
+    
 <body>
+
+
+ 
+
 
   <script>
       $(document).ready(function(){
@@ -18,9 +50,15 @@
       });
   </script>
 
-  <%- include('./topnav')%>
- 
+
+
+
+</div>
+
   <div class="mypage_header">
+
+
+
 
     <div class="header_title">
       나의 정보
@@ -35,14 +73,13 @@
     <div class="header_order">
       포인트 P  
     </div>
-
-
   </div>
 
 
 
+
   <div class="myinfo"> 
-     
+
       <!-- <div class="customer_point"> 나의 정보 </div>  -->
 
   </div>
@@ -425,6 +462,7 @@
   <script>
 
     const token = '<%- token %>';
+    console.log('여기서는 토큰이 뭐라고 찍히는 것일까? ', token)
   
    
   </script>

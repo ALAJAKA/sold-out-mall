@@ -23,9 +23,9 @@
   table,td,th,td {border: 1px solid black; text-align: center; padding: 10px;}
 </style>
 
-
 <script>
-
+  const token = '<%- token = 1 %>';
+ 
 </script>
 
 
@@ -90,8 +90,29 @@
   }
 </script>
 <body>
-<%- include('./topnav')%>
+  <div>
 
+    <div class="container" style="margin-top: 20px;text-align: center; height:50px; line-height: 50px;" >
+      <div class="row">
+          </div>
+
+          <div class="col"></div>
+          <div class="col"></div>
+          <div class="col" style="text-align: right">
+              <%if(!token){%>
+
+              <button type="button" class="btn btn-primary" style="margin-right:10px" onclick="location.replace('/login')">로그인</button>
+              <button type="button" class="btn btn-info" onclick="location.replace('/signup')">회원가입</button>
+              <%}else if(token){%>
+
+                  <button type="button" class="btn btn-info" onclick="location.replace('/logout')">Admin 로그아웃</button>
+              <%}%>
+
+
+          </div>
+      </div>
+  </div>
+  
 <div class="container" style="margin-top: 20px;text-align: center" >
   <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
@@ -142,57 +163,49 @@
     <tr style="border: 1px solid black;">
       <th>회원아이디</th>
       <th>이름</th>
-      <th>주소</th>
       <th>총 구매 금액</th>
       <th>전화번호</th>
+      <th>자기소개</th>
       <th>정보 수정</th>
       <th>삭제</th>
     </tr>
     <tr>
-      <td>더미데이터</td>
-      <td>흑우</td>
-      <td>더미</td>
-      <td>더미</td>
-      <td>더미</td>
+      <td>rocketcoupang</td>
+      <td>김범석</td>
+      <td>$777,271</td>
+      <td>010-5417-5678</td>
+      <td>CEO of Coupang</td>
       <td><a href="#"class="btn btn-primary">수정</a></td>
       <td><a href="#"class="btn btn-danger">삭제</a></td>
     </tr>
     <tr>
-      <td>더미데이터</td>
-      <td>흑우</td>
-      <td>더미</td>
-      <td>더미</td>
-      <td>더미</td>
+      <td>marketkurly234</td>
+      <td>김슬아</td>
+      <td>$281,023</td>
+      <td>010-5477-5678</td>
+      <td>마켓컬리 CEO</td>
       <td><a href="#"class="btn btn-primary">수정</a></td>
       <td><a href="#"class="btn btn-danger">삭제</a></td>
     </tr>
     <tr>
-      <td>더미데이터</td>
-      <td>흑우</td>
-      <td>더미</td>
-      <td>더미</td>
-      <td>더미</td>
+      <td>emart123</td>
+      <td>정용진</td>
+      <td>$800,000</td>
+      <td>010-5778-55678</td>
+      <td>신세계 그룹 부회장</td>
       <td><a href="#"class="btn btn-primary">수정</a></td>
       <td><a href="#"class="btn btn-danger">삭제</a></td>
     </tr>
     <tr>
-      <td>더미데이터</td>
-      <td>흑우</td>
-      <td>더미</td>
-      <td>더미</td>
-      <td>더미</td>
+      <td>amazon123</td>
+      <td>Jeff Bezos</td>
+      <td>$197,213</td>
+      <td>010-5789-5200</td>
+      <td>CEO of Amazon</td>
       <td><a href="#"class="btn btn-primary">수정</a></td>
       <td><a href="#"class="btn btn-danger">삭제</a></td>
     </tr>
-    <tr>
-      <td>더미데이터</td>
-      <td>흑우</td>
-      <td>더미</td>
-      <td>더미</td>
-      <td>더미</td>
-      <td><a href="#"class="btn btn-primary">수정</a></td>
-      <td><a href="#"class="btn btn-danger">삭제</a></td>
-    </tr>
+
 
 
   </table>

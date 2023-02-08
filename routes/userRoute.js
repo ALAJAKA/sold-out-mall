@@ -23,8 +23,12 @@ router.get('/logout', isLoggedIn, userController.logout);
 //Front 마이페이지
 router.get('/me', isLoggedIn, isAuth, (req, res) => {
   try {
-    userId = req.userId;
-    accessToken = req.accessToken;
+    const userId = req.userId;
+    const accessToken = req.accessToken;
+    console.log(
+      '미들웨어를 타고 어떤 accessToken을 받아오는 것일까?',
+      accessToken
+    );
 
     return res.status(200).render('me.ejs', {
       token: accessToken,
